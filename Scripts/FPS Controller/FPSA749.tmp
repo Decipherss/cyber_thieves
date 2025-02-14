@@ -1,0 +1,66 @@
+[gd_scene load_steps=8 format=3 uid="uid://djhxxsnygx8t7"]
+
+[ext_resource type="PackedScene" uid="uid://due5njjujj03j" path="res://CameraSystem/Virtual Camera.tscn" id="1_frbqp"]
+[ext_resource type="Script" path="res://FPS Controller/FPS_Controller.gd" id="1_nuuvt"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_yqv8n"]
+
+[sub_resource type="Animation" id="Animation_j0u6t"]
+resource_name = "Idle"
+length = 5.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Virtual Camera:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.5, 5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0.5, 0), Vector3(0, 0.45, 0), Vector3(0, 0.5, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_o2g7a"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Virtual Camera:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.4, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rqyy8"]
+_data = {
+"Idle": SubResource("Animation_j0u6t"),
+"RESET": SubResource("Animation_o2g7a")
+}
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3naki"]
+
+[node name="FPS Controller" type="CharacterBody3D"]
+script = ExtResource("1_nuuvt")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_yqv8n")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_rqyy8")
+}
+
+[node name="Virtual Camera" parent="." instance=ExtResource("1_frbqp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
+Near_Plane = 0.05
+Far_Plane = 4000.0
+Priority = 99
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_3naki")

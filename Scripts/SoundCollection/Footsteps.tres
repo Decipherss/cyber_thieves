@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="SoundCollection" load_steps=15 format=3 uid="uid://dcas7vq8k1y03"]
+
+[ext_resource type="AudioStream" uid="uid://ccjfpfbfv25ne" path="res://Audio/Footsteps/Metal Footstep 1.wav" id="1_wkufl"]
+[ext_resource type="AudioStream" uid="uid://bkwoataxg0vg4" path="res://Audio/Footsteps/Metal Footstep 2.wav" id="2_hopdq"]
+[ext_resource type="AudioStream" uid="uid://bq6ekntfx2ohu" path="res://Audio/Footsteps/Metal Footstep 3.wav" id="3_01w0p"]
+[ext_resource type="AudioStream" uid="uid://dp4r14l0t0xwu" path="res://Audio/Footsteps/Metal Footstep 4.wav" id="4_6q047"]
+[ext_resource type="AudioStream" uid="uid://dfgl1orebxxmx" path="res://Audio/Footsteps/Sand FootStep 2.wav" id="5_70mgm"]
+[ext_resource type="AudioStream" uid="uid://0kc1bu1jyf0a" path="res://Audio/Footsteps/Sand FootStep 3.wav" id="6_jx03d"]
+[ext_resource type="AudioStream" uid="uid://bqy42qtshlgee" path="res://Audio/Footsteps/Sand FootStep 4.wav" id="7_xsumw"]
+[ext_resource type="AudioStream" uid="uid://k7n2g4jiab6n" path="res://Audio/Footsteps/Sand FootStep 5.wav" id="8_pt2pa"]
+[ext_resource type="AudioStream" uid="uid://qma1nqa2c8qq" path="res://Audio/Footsteps/Wood Footstep 1.wav" id="9_aj2yn"]
+[ext_resource type="AudioStream" uid="uid://bndtxek588g0w" path="res://Audio/Footsteps/Wood Footstep 2.wav" id="10_pucdg"]
+[ext_resource type="AudioStream" uid="uid://ckont8dq62wl0" path="res://Audio/Footsteps/Wood Footstep 3.wav" id="11_acyb2"]
+[ext_resource type="AudioStream" uid="uid://coewveoo64jmf" path="res://Audio/Footsteps/Wood Footstep 4.wav" id="12_wpe17"]
+[ext_resource type="Script" path="res://Scripts/SoundCollection/SoundCollection.gd" id="13_ilu66"]
+
+[sub_resource type="AudioStream" id="AudioStream_d1fh3"]
+
+[resource]
+script = ExtResource("13_ilu66")
+collection = {
+"metal": [ExtResource("1_wkufl"), ExtResource("2_hopdq"), ExtResource("3_01w0p"), ExtResource("4_6q047")],
+"sand": [SubResource("AudioStream_d1fh3"), ExtResource("5_70mgm"), ExtResource("6_jx03d"), ExtResource("7_xsumw"), ExtResource("8_pt2pa")],
+"wood": [ExtResource("9_aj2yn"), ExtResource("10_pucdg"), ExtResource("11_acyb2"), ExtResource("12_wpe17")]
+}

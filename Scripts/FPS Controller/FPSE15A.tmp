@@ -1,0 +1,515 @@
+[gd_scene load_steps=74 format=3 uid="uid://djhxxsnygx8t7"]
+
+[ext_resource type="PackedScene" uid="uid://due5njjujj03j" path="res://Scripts/CameraSystem/Virtual Camera.tscn" id="1_frbqp"]
+[ext_resource type="Script" path="res://Scripts/FPS Controller/FPS_Controller.gd" id="1_nuuvt"]
+[ext_resource type="PackedScene" uid="uid://cln4ib0mh2pqh" path="res://Models/FPS Hands/FPS_Hands.blend" id="2_y7s3b"]
+[ext_resource type="Script" path="res://Scripts/Input/Input.gd" id="3_jinqk"]
+[ext_resource type="PackedScene" uid="uid://o7anx2l2naaw" path="res://Scripts/State Machine/State Machine.tscn" id="3_m0nhi"]
+[ext_resource type="Script" path="res://Scripts/FPS Controller/FootstepPlayer.gd" id="4_ycpnd"]
+[ext_resource type="Resource" uid="uid://dcas7vq8k1y03" path="res://Scripts/SoundCollection/Footsteps.tres" id="5_j25kp"]
+[ext_resource type="Script" path="res://Scripts/FPS Controller/States/MoveState.gd" id="6_tytqc"]
+[ext_resource type="Script" path="res://Scripts/FPS Controller/States/FallState.gd" id="7_bab4t"]
+[ext_resource type="AudioStream" uid="uid://b5rw14v2hprjl" path="res://Audio/Music/FIRED - OST.mp3" id="7_dgsfj"]
+[ext_resource type="Shader" path="res://Scripts/Crosshair/Crosshair_Shader.gdshader" id="8_73p27"]
+[ext_resource type="Script" path="res://Scripts/Audio Conductor/Conductor.gd" id="8_nr2g2"]
+[ext_resource type="Script" path="res://Scripts/FPS Controller/States/AimState.gd" id="8_x2mmt"]
+[ext_resource type="Script" path="res://Scripts/Crosshair/Crosshair.gd" id="9_pcu0k"]
+[ext_resource type="Script" path="res://Scripts/FPS Controller/States/GunShootState.gd" id="11_4ummi"]
+[ext_resource type="AudioStream" uid="uid://cdcsx0dm1bwwp" path="res://Audio/Game/shot_sfx.wav" id="12_lkstq"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3naki"]
+radius = 0.6
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hpesj"]
+animation = &"Shoot"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_42ler"]
+animation = &"Aim_Shoot"
+
+[sub_resource type="Curve" id="Curve_icm83"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_2jlhu"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_io07d"]
+fadein_time = 0.1
+fadein_curve = SubResource("Curve_icm83")
+fadeout_time = 0.1
+fadeout_curve = SubResource("Curve_2jlhu")
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gxn1g"]
+animation = &"Aim_Up"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_guywl"]
+animation = &"Aim_Down"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1s2vy"]
+animation = &"Aim_Right"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_61r5i"]
+animation = &"Aim_Left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_at1ke"]
+animation = &"Aim_Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_bbme5"]
+animation = &"Aim_Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_45isw"]
+animation = &"Aim_Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_teg5m"]
+animation = &"Aim_Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8m0rx"]
+animation = &"Aim_Idle"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_paceg"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_gxn1g")
+blend_point_0/pos = Vector2(0, 1)
+blend_point_1/node = SubResource("AnimationNodeAnimation_guywl")
+blend_point_1/pos = Vector2(0, -1)
+blend_point_2/node = SubResource("AnimationNodeAnimation_1s2vy")
+blend_point_2/pos = Vector2(1, 0)
+blend_point_3/node = SubResource("AnimationNodeAnimation_61r5i")
+blend_point_3/pos = Vector2(-1, 0)
+blend_point_4/node = SubResource("AnimationNodeAnimation_at1ke")
+blend_point_4/pos = Vector2(0, 0.2)
+blend_point_5/node = SubResource("AnimationNodeAnimation_bbme5")
+blend_point_5/pos = Vector2(0.2, 0)
+blend_point_6/node = SubResource("AnimationNodeAnimation_45isw")
+blend_point_6/pos = Vector2(0, -0.2)
+blend_point_7/node = SubResource("AnimationNodeAnimation_teg5m")
+blend_point_7/pos = Vector2(-0.2, 0)
+blend_point_8/node = SubResource("AnimationNodeAnimation_8m0rx")
+blend_point_8/pos = Vector2(0, 0)
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_t23wc"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wtbmm"]
+animation = &"Fall_Up"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_fwiyb"]
+animation = &"Fall_Down"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_fef4f"]
+animation = &"Fall_Left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ultfo"]
+animation = &"Fall_Right"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5kgbe"]
+animation = &"Fall_Down"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jrtxg"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_p8raw"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_63na5"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8dng3"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_l0fsn"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_t23wc")
+blend_point_0/pos = Vector2(0, 0)
+blend_point_1/node = SubResource("AnimationNodeAnimation_wtbmm")
+blend_point_1/pos = Vector2(0, 1)
+blend_point_2/node = SubResource("AnimationNodeAnimation_fwiyb")
+blend_point_2/pos = Vector2(0, -1)
+blend_point_3/node = SubResource("AnimationNodeAnimation_fef4f")
+blend_point_3/pos = Vector2(-1, 0)
+blend_point_4/node = SubResource("AnimationNodeAnimation_ultfo")
+blend_point_4/pos = Vector2(1, 0)
+blend_point_5/node = SubResource("AnimationNodeAnimation_5kgbe")
+blend_point_5/pos = Vector2(0, -1)
+blend_point_6/node = SubResource("AnimationNodeAnimation_jrtxg")
+blend_point_6/pos = Vector2(0, 0.3)
+blend_point_7/node = SubResource("AnimationNodeAnimation_p8raw")
+blend_point_7/pos = Vector2(0.2, 0)
+blend_point_8/node = SubResource("AnimationNodeAnimation_63na5")
+blend_point_8/pos = Vector2(0, -0.3)
+blend_point_9/node = SubResource("AnimationNodeAnimation_8dng3")
+blend_point_9/pos = Vector2(-0.2, 0)
+sync = true
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lgav5"]
+animation = &"Walk_Fwd"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_q26v4"]
+animation = &"Walk_Left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_nj4s3"]
+animation = &"Walk_Right"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7ug8m"]
+animation = &"Walk_Back"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6l8jp"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_cp020"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ht07m"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_tm10s"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_bqunc"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_00641"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_lgav5")
+blend_point_0/pos = Vector2(0, 1)
+blend_point_1/node = SubResource("AnimationNodeAnimation_q26v4")
+blend_point_1/pos = Vector2(-1, 0)
+blend_point_2/node = SubResource("AnimationNodeAnimation_nj4s3")
+blend_point_2/pos = Vector2(1, 0)
+blend_point_3/node = SubResource("AnimationNodeAnimation_7ug8m")
+blend_point_3/pos = Vector2(0, -1)
+blend_point_4/node = SubResource("AnimationNodeAnimation_6l8jp")
+blend_point_4/pos = Vector2(-0.2, 0)
+blend_point_5/node = SubResource("AnimationNodeAnimation_cp020")
+blend_point_5/pos = Vector2(0.2, 0)
+blend_point_6/node = SubResource("AnimationNodeAnimation_ht07m")
+blend_point_6/pos = Vector2(0, 0.2)
+blend_point_7/node = SubResource("AnimationNodeAnimation_tm10s")
+blend_point_7/pos = Vector2(0, -0.2)
+blend_point_8/node = SubResource("AnimationNodeAnimation_bqunc")
+blend_point_8/pos = Vector2(0, 0)
+sync = true
+
+[sub_resource type="Curve" id="Curve_x85my"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_f5rxp"]
+xfade_time = 0.2
+xfade_curve = SubResource("Curve_x85my")
+advance_mode = 2
+advance_expression = "false"
+
+[sub_resource type="Curve" id="Curve_t8ibh"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1luq2"]
+xfade_time = 0.2
+xfade_curve = SubResource("Curve_t8ibh")
+advance_mode = 2
+advance_expression = "false"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_igig2"]
+advance_mode = 2
+
+[sub_resource type="Curve" id="Curve_w4rsu"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1tsdc"]
+xfade_time = 0.2
+xfade_curve = SubResource("Curve_w4rsu")
+advance_mode = 2
+advance_expression = "false"
+
+[sub_resource type="Curve" id="Curve_36641"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5ikx5"]
+xfade_time = 0.2
+xfade_curve = SubResource("Curve_36641")
+advance_mode = 2
+advance_expression = "false"
+
+[sub_resource type="Curve" id="Curve_7t8bi"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1se6x"]
+xfade_time = 0.2
+xfade_curve = SubResource("Curve_7t8bi")
+advance_mode = 2
+advance_expression = "false"
+
+[sub_resource type="Curve" id="Curve_euy2v"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_uprqm"]
+xfade_time = 0.2
+xfade_curve = SubResource("Curve_euy2v")
+advance_mode = 2
+advance_expression = "false"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_u6m73"]
+states/End/position = Vector2(712, 100)
+states/aim/node = SubResource("AnimationNodeBlendSpace2D_paceg")
+states/aim/position = Vector2(535, 100)
+states/fall/node = SubResource("AnimationNodeBlendSpace2D_l0fsn")
+states/fall/position = Vector2(438, 196)
+states/move/node = SubResource("AnimationNodeBlendSpace2D_00641")
+states/move/position = Vector2(363, 100)
+transitions = ["move", "fall", SubResource("AnimationNodeStateMachineTransition_f5rxp"), "fall", "move", SubResource("AnimationNodeStateMachineTransition_1luq2"), "Start", "move", SubResource("AnimationNodeStateMachineTransition_igig2"), "move", "aim", SubResource("AnimationNodeStateMachineTransition_1tsdc"), "aim", "move", SubResource("AnimationNodeStateMachineTransition_5ikx5"), "fall", "aim", SubResource("AnimationNodeStateMachineTransition_1se6x"), "aim", "fall", SubResource("AnimationNodeStateMachineTransition_uprqm")]
+graph_offset = Vector2(-28, -46)
+
+[sub_resource type="Curve" id="Curve_jwe3w"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_4gnwm"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_l42ro"]
+fadein_time = 0.1
+fadein_curve = SubResource("Curve_jwe3w")
+fadeout_time = 0.1
+fadeout_curve = SubResource("Curve_4gnwm")
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_pr2yi"]
+graph_offset = Vector2(-555.578, 13.0105)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_42ler")
+nodes/Animation/position = Vector2(-340, 320)
+"nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_hpesj")
+"nodes/Animation 2/position" = Vector2(-140, 560)
+nodes/aim_shoot/node = SubResource("AnimationNodeOneShot_io07d")
+nodes/aim_shoot/position = Vector2(-140, 320)
+nodes/movement/node = SubResource("AnimationNodeStateMachine_u6m73")
+nodes/movement/position = Vector2(-340, 160)
+nodes/output/position = Vector2(220, 320)
+nodes/shoot/node = SubResource("AnimationNodeOneShot_l42ro")
+nodes/shoot/position = Vector2(20, 320)
+node_connections = [&"aim_shoot", 0, &"movement", &"aim_shoot", 1, &"Animation", &"output", 0, &"shoot", &"shoot", 0, &"aim_shoot", &"shoot", 1, &"Animation 2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nis4o"]
+shader = ExtResource("8_73p27")
+shader_parameter/color = Vector3(1, 0, 0)
+shader_parameter/thickness = 0.25
+shader_parameter/velocity = 0.1
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_oddu3"]
+size = Vector2(80, 80)
+
+[node name="FPS Controller" type="CharacterBody3D" node_paths=PackedStringArray("camera")]
+script = ExtResource("1_nuuvt")
+camera = NodePath("FPS_Hands")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_3naki")
+
+[node name="FPS_Hands" parent="." instance=ExtResource("2_y7s3b")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.5, 0)
+
+[node name="Skeleton3D" parent="FPS_Hands/Armature" index="0"]
+bones/1/rotation = Quaternion(0.82166, 0.423406, 0.373431, 0.0784328)
+bones/1/scale = Vector3(1, 1, 1)
+bones/2/rotation = Quaternion(-0.475358, -0.0684, -0.270686, 0.834317)
+bones/2/scale = Vector3(1, 1, 1)
+bones/3/rotation = Quaternion(0.0166518, 0.17831, 0.0125781, 0.983753)
+bones/3/scale = Vector3(1, 1, 1)
+bones/4/rotation = Quaternion(-0.649935, 0.0485856, -0.0889054, 0.753206)
+bones/5/rotation = Quaternion(-0.633966, -0.0371051, 0.0489869, 0.770916)
+bones/5/scale = Vector3(1, 1, 1)
+bones/6/rotation = Quaternion(-0.630295, 0.00399548, -0.0243115, 0.775965)
+bones/7/rotation = Quaternion(-0.733117, -0.0268075, 0.0130916, 0.679448)
+bones/8/rotation = Quaternion(-0.60599, -0.0107967, 0.0174624, 0.795207)
+bones/9/rotation = Quaternion(-0.624396, 0.00254498, -0.0111362, 0.781025)
+bones/9/scale = Vector3(1, 1, 1)
+bones/10/rotation = Quaternion(-0.733215, -0.0220061, 0.0491613, 0.677861)
+bones/11/rotation = Quaternion(-0.571671, 0.0138579, -0.0187861, 0.820151)
+bones/11/scale = Vector3(1, 1, 1)
+bones/12/rotation = Quaternion(-0.689571, 8.93391e-05, -0.00311544, 0.724212)
+bones/13/rotation = Quaternion(-0.69965, -0.0590847, 0.0926744, 0.705981)
+bones/14/rotation = Quaternion(-0.598843, 0.037792, -0.0115451, 0.799891)
+bones/14/scale = Vector3(1, 1, 1)
+bones/15/rotation = Quaternion(-0.688682, 0.0215198, 0.00649962, 0.724715)
+bones/15/scale = Vector3(1, 1, 1)
+bones/16/rotation = Quaternion(-0.297456, 0.677937, -0.261077, 0.619484)
+bones/16/scale = Vector3(1, 1, 1)
+bones/17/rotation = Quaternion(-0.492043, 0.0365608, -0.0421298, 0.868782)
+bones/17/scale = Vector3(1, 1, 1)
+bones/18/position = Vector3(0.309336, -0.190723, 0.320118)
+bones/18/rotation = Quaternion(0.48717, 0.491125, 0.52886, 0.491699)
+bones/18/scale = Vector3(0.999998, 1, 1)
+bones/19/position = Vector3(0.27006, -0.324845, -0.226829)
+bones/20/rotation = Quaternion(0.821667, -0.423354, -0.373476, 0.0784252)
+bones/20/scale = Vector3(1, 1, 1)
+bones/21/rotation = Quaternion(-0.475236, 0.0684075, 0.270616, 0.834409)
+bones/21/scale = Vector3(1, 1, 1)
+bones/22/rotation = Quaternion(0.0153241, -0.17846, -0.00568254, 0.983811)
+bones/22/scale = Vector3(1, 1, 1)
+bones/23/position = Vector3(-0.03748, 0.132997, 0.00172598)
+bones/23/rotation = Quaternion(-0.0473982, 0.0165541, 0.0999535, 0.993725)
+bones/23/scale = Vector3(1, 1, 1)
+bones/24/rotation = Quaternion(-0.0239379, -0.00098238, -0.0614454, 0.997823)
+bones/24/scale = Vector3(1, 1, 1)
+bones/25/rotation = Quaternion(-0.0179353, 0.0118411, 0.0216056, 0.999536)
+bones/26/position = Vector3(-0.00741035, 0.137788, 0.00213075)
+bones/26/rotation = Quaternion(-0.711857, 0.0486823, -0.0331793, 0.699849)
+bones/26/scale = Vector3(0.998005, 0.998005, 0.998005)
+bones/27/rotation = Quaternion(-0.583801, 0.0103104, -0.0177539, 0.811637)
+bones/28/rotation = Quaternion(-0.60263, -0.00223705, 0.0112022, 0.797939)
+bones/28/scale = Vector3(1, 1, 1)
+bones/29/position = Vector3(0.0161573, 0.130572, 0.00278817)
+bones/29/rotation = Quaternion(-0.749485, 0.0474677, -0.0444306, 0.65882)
+bones/29/scale = Vector3(0.998005, 0.998005, 0.998005)
+bones/30/rotation = Quaternion(-0.592994, -0.014346, 0.018416, 0.804868)
+bones/30/scale = Vector3(1, 1, 1)
+bones/31/rotation = Quaternion(-0.708375, -0.000171211, 0.003112, 0.70583)
+bones/32/position = Vector3(0.0419918, 0.116131, -0.00605042)
+bones/32/rotation = Quaternion(-0.744371, 0.10533, -0.0460195, 0.657799)
+bones/32/scale = Vector3(0.998005, 0.998005, 0.998005)
+bones/33/rotation = Quaternion(-0.655294, -0.03853, 0.00877299, 0.75434)
+bones/33/scale = Vector3(1, 1, 1)
+bones/34/rotation = Quaternion(-0.739442, -0.0209916, -0.00804367, 0.672844)
+bones/34/scale = Vector3(1, 1, 1)
+bones/35/position = Vector3(-0.0570148, 0.0668478, -0.010632)
+bones/35/rotation = Quaternion(0.296006, -0.525029, 0.367761, 0.70815)
+bones/35/scale = Vector3(1, 1, 1)
+bones/36/rotation = Quaternion(0.0913485, -0.00600217, 0.055458, 0.994255)
+bones/36/scale = Vector3(1, 1, 1)
+bones/37/position = Vector3(-0.30934, -0.19081, 0.320116)
+bones/37/rotation = Quaternion(0.483843, -0.494404, -0.525528, 0.495259)
+bones/37/scale = Vector3(0.999998, 1, 1)
+bones/38/position = Vector3(-0.27006, -0.324845, -0.226829)
+bones/39/rotation = Quaternion(-6.98135e-05, 0.705301, 0.708905, 0.00198415)
+
+[node name="Base" parent="FPS_Hands/Armature/Skeleton3D" index="0"]
+cast_shadow = 0
+
+[node name="Camera Holder" type="BoneAttachment3D" parent="FPS_Hands/Armature/Skeleton3D" index="1"]
+physics_interpolation_mode = 1
+auto_translate_mode = 1
+transform = Transform3D(-0.999992, -0.00291162, 0.00269986, 0.00271467, -0.0050931, 0.999983, -0.00289782, 0.999983, 0.00510103, 0, 0, 0)
+bone_name = "camera"
+bone_idx = 39
+
+[node name="Virtual Camera" parent="FPS_Hands/Armature/Skeleton3D/Camera Holder" instance=ExtResource("1_frbqp")]
+transform = Transform3D(1, -4.12911e-10, -8.82428e-08, -8.73115e-08, 9.31323e-10, -1, 4.91127e-10, 1, 0, 0, 0, 0)
+FOV = 80.0
+Near_Plane = 0.1501
+
+[node name="Camera" parent="FPS_Hands" index="1"]
+transform = Transform3D(-0.99986, 0.00121541, -0.0167106, -6.28643e-09, 0.997365, 0.0725415, 0.0167547, 0.0725313, -0.997226, 0, 0, 0)
+visible = false
+
+[node name="AnimationPlayer" parent="FPS_Hands" index="3"]
+root_motion_track = NodePath("Armature/Skeleton3D:root")
+
+[node name="Inputs" type="Node" parent="."]
+script = ExtResource("3_jinqk")
+
+[node name="Controller State Machine" parent="." node_paths=PackedStringArray("First_State") instance=ExtResource("3_m0nhi")]
+First_State = NodePath("Move")
+
+[node name="Move" type="Node" parent="Controller State Machine" node_paths=PackedStringArray("inputs", "controller", "camera", "animator", "fall_state", "aim_state", "shoot_state")]
+script = ExtResource("6_tytqc")
+inputs = NodePath("../../Inputs")
+controller = NodePath("../..")
+camera = NodePath("../../FPS_Hands/Armature/Skeleton3D/Camera Holder/Virtual Camera")
+animator = NodePath("../../AnimationTree")
+fall_state = NodePath("../Fall")
+aim_state = NodePath("../Aim")
+shoot_state = NodePath("../Shoot")
+speed = 15.0
+jumpForce = 5.0
+fov = 80.0
+
+[node name="Shoot" type="Node" parent="Controller State Machine" node_paths=PackedStringArray("inputs", "controller", "crosshair", "shoot_sfx", "animator", "conductor", "aim_state", "move_state")]
+script = ExtResource("11_4ummi")
+inputs = NodePath("../../Inputs")
+controller = NodePath("../..")
+crosshair = NodePath("../../Crosshair")
+shoot_sfx = NodePath("../../Shoot_SFX")
+animator = NodePath("../../AnimationTree")
+conductor = NodePath("../../Track 100BPM")
+aim_state = NodePath("../Aim")
+move_state = NodePath("../Move")
+speed = 12.0
+
+[node name="Aim" type="Node" parent="Controller State Machine" node_paths=PackedStringArray("camera", "inputs", "controller", "animator", "move_state", "shoot_state")]
+script = ExtResource("8_x2mmt")
+camera = NodePath("../../FPS_Hands/Armature/Skeleton3D/Camera Holder/Virtual Camera")
+inputs = NodePath("../../Inputs")
+controller = NodePath("../..")
+animator = NodePath("../../AnimationTree")
+move_state = NodePath("../Move")
+shoot_state = NodePath("../Shoot")
+speed = 10.0
+fov = 60.0
+jumpForce = 5.0
+
+[node name="Fall" type="Node" parent="Controller State Machine" node_paths=PackedStringArray("inputs", "controller", "camera", "animator", "move_state", "aim_state", "shoot_state")]
+script = ExtResource("7_bab4t")
+inputs = NodePath("../../Inputs")
+controller = NodePath("../..")
+camera = NodePath("../../FPS_Hands/Armature/Skeleton3D/Camera Holder/Virtual Camera")
+animator = NodePath("../../AnimationTree")
+move_state = NodePath("../Move")
+aim_state = NodePath("../Aim")
+shoot_state = NodePath("../Shoot")
+speed = 13.0
+fov = 90.0
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+root_node = NodePath("../FPS_Hands")
+tree_root = SubResource("AnimationNodeBlendTree_pr2yi")
+anim_player = NodePath("../FPS_Hands/AnimationPlayer")
+parameters/aim_shoot/active = false
+parameters/aim_shoot/internal_active = false
+parameters/aim_shoot/request = 0
+parameters/movement/aim/blend_position = Vector2(0.00363636, 0.285372)
+parameters/movement/fall/blend_position = Vector2(0, 0)
+parameters/movement/move/blend_position = Vector2(0, 0)
+parameters/shoot/active = false
+parameters/shoot/internal_active = false
+parameters/shoot/request = 0
+
+[node name="Footstep Player" type="AudioStreamPlayer3D" parent="."]
+script = ExtResource("4_ycpnd")
+footsteps = ExtResource("5_j25kp")
+
+[node name="Track 100BPM" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_dgsfj")
+volume_db = 12.0
+autoplay = true
+bus = &"Music"
+parameters/looping = true
+script = ExtResource("8_nr2g2")
+
+[node name="Crosshair" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_nis4o")
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -40.0
+offset_right = 40.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("PlaceholderTexture2D_oddu3")
+script = ExtResource("9_pcu0k")
+color = Color(0.238247, 0.500597, 0.498331, 1)
+thickness = 0.3
+
+[node name="Shoot_SFX" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("12_lkstq")
+volume_db = -20.0
+bus = &"Game"
+
+[editable path="FPS_Hands"]
