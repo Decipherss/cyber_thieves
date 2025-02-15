@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://bn43avrjgqyp1"]
+
+[ext_resource type="Script" path="res://LeoSandbox/leo_test_character.gd" id="1_tl8q2"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4b5p2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aosve"]
+albedo_color = Color(0, 1, 1, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_x0i5j"]
+
+[node name="NPC" type="CharacterBody3D" groups=["NPC"]]
+script = ExtResource("1_tl8q2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_4b5p2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_aosve")
+mesh = SubResource("CapsuleMesh_x0i5j")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+avoidance_enabled = true
+
+[connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]

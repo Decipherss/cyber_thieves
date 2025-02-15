@@ -1,0 +1,49 @@
+[gd_scene load_steps=8 format=3 uid="uid://bgcnq3ix1puqh"]
+
+[ext_resource type="PackedScene" uid="uid://b5ua61eq7fj2g" path="res://LeoSandbox/NPC_Spawner.tscn" id="1_g2eye"]
+[ext_resource type="PackedScene" uid="uid://c4bjlxf5wxhuf" path="res://LeoSandbox/DespawnZone.tscn" id="2_hd5kw"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_nwslw"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_3idda"]
+sky_material = SubResource("ProceduralSkyMaterial_nwslw")
+
+[sub_resource type="Environment" id="Environment_fhukb"]
+background_mode = 2
+sky = SubResource("Sky_3idda")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_81n34"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_m406q"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_fhukb")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Ground" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0, 0)
+shape = SubResource("BoxShape3D_81n34")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
+transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0, 0)
+mesh = SubResource("BoxMesh_m406q")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.739102, 0.673593, 0, -0.673593, 0.739102, 0, 7.93059, 8.5051)
+
+[node name="Node3D" parent="." instance=ExtResource("1_g2eye")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.04347, 1.01256, 4.56398)
+
+[node name="Area3D" parent="." instance=ExtResource("2_hd5kw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.33519, 0.5, -4.76434)

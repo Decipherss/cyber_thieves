@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://c4bjlxf5wxhuf"]
+
+[ext_resource type="Script" path="res://LeoSandbox/despawn_zone.gd" id="1_6mtfr"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8e202"]
+
+[node name="Area3D" type="Area3D" groups=["DespawnZone"]]
+script = ExtResource("1_6mtfr")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_8e202")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
