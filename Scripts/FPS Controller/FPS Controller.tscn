@@ -1,6 +1,5 @@
-[gd_scene load_steps=9 format=3 uid="uid://djhxxsnygx8t7"]
+[gd_scene load_steps=8 format=3 uid="uid://djhxxsnygx8t7"]
 
-[ext_resource type="Script" path="res://Scripts/Input/Input.gd" id="1_3an1v"]
 [ext_resource type="Script" path="res://Scripts/FPS Controller/FPS_Controller.gd" id="1_aeyxv"]
 [ext_resource type="PackedScene" uid="uid://due5njjujj03j" path="res://Scripts/CameraSystem/Virtual Camera.tscn" id="2_ol4uu"]
 [ext_resource type="PackedScene" uid="uid://o7anx2l2naaw" path="res://Scripts/State Machine/State Machine.tscn" id="3_m0nhi"]
@@ -22,15 +21,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.358813, 0.559807, 0)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_3naki")
 
-[node name="Inputs" type="Node" parent="."]
-script = ExtResource("1_3an1v")
-
 [node name="Controller State Machine" parent="." node_paths=PackedStringArray("First_State") instance=ExtResource("3_m0nhi")]
 First_State = NodePath("Move")
 
-[node name="Move" type="Node" parent="Controller State Machine" node_paths=PackedStringArray("inputs", "controller", "camera")]
+[node name="Move" type="Node" parent="Controller State Machine" node_paths=PackedStringArray("controller", "camera")]
 script = ExtResource("3_xodot")
-inputs = NodePath("../../Inputs")
 controller = NodePath("../..")
 camera = NodePath("../../Virtual Camera")
 

@@ -1,0 +1,51 @@
+[gd_scene load_steps=5 format=3 uid="uid://ehudage0l5hk"]
+
+[ext_resource type="PackedScene" uid="uid://c12rh18yu5osh" path="res://Scripts/Hacking Minigame/HackingArrow.tscn" id="1_qexi3"]
+[ext_resource type="Texture2D" uid="uid://c1uvhlhdijgn4" path="res://UI/Sprites/PDA_Background.png" id="1_sxqxo"]
+[ext_resource type="PackedScene" uid="uid://ds1nj30vqe7uq" path="res://Scripts/Hacking Minigame/HackingNode.tscn" id="2_uqwoy"]
+[ext_resource type="PackedScene" uid="uid://tnvtvnxpklay" path="res://Scripts/Hacking Minigame/Firewall.tscn" id="3_5etap"]
+
+[node name="Hacking Minigame" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(579, 323)
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(579, 323)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("1_sxqxo")
+
+[node name="Hacking Arrow ( Player )" parent="." instance=ExtResource("1_qexi3")]
+position = Vector2(591, 433)
+
+[node name="HackingNode" parent="." instance=ExtResource("2_uqwoy")]
+position = Vector2(513, 351)
+
+[node name="FireWall" parent="." node_paths=PackedStringArray("Center") instance=ExtResource("3_5etap")]
+position = Vector2(503.177, 349.126)
+rotation = 264.082
+Center = NodePath("../HackingNode")
+Distance = 10.0
+
+[node name="FireWall2" parent="." node_paths=PackedStringArray("Center") instance=ExtResource("3_5etap")]
+position = Vector2(522.298, 347.319)
+rotation = -537.589
+Center = NodePath("../HackingNode")
+Distance = 10.0
+Speed = -0.2
+
+[node name="HackingNode2" parent="." instance=ExtResource("2_uqwoy")]
+position = Vector2(668.985, 352)
+
+[node name="FireWall3" parent="." node_paths=PackedStringArray("Center") instance=ExtResource("3_5etap")]
+position = Vector2(659.162, 350.126)
+rotation = 823.286
+Center = NodePath("../HackingNode2")
+Distance = 10.0
+
+[node name="FireWall4" parent="." node_paths=PackedStringArray("Center") instance=ExtResource("3_5etap")]
+position = Vector2(678.283, 348.319)
+rotation = -1649.71
+Center = NodePath("../HackingNode2")
+Distance = 10.0
+Speed = -0.2

@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://c12rh18yu5osh"]
+
+[ext_resource type="Script" path="res://Scripts/Hacking Minigame/HackingArrow.gd" id="1_qoxxn"]
+[ext_resource type="Texture2D" uid="uid://dhs1hra7phy11" path="res://icon.svg" id="1_tb66o"]
+[ext_resource type="Script" path="res://Scripts/State Machine/StateMachine.gd" id="2_oks1q"]
+[ext_resource type="Script" path="res://Scripts/Hacking Minigame/States/HackingAim.gd" id="3_1wnr8"]
+[ext_resource type="Script" path="res://Scripts/Hacking Minigame/States/HackingTravel.gd" id="4_mer7p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_we6wm"]
+size = Vector2(12, 6)
+
+[node name="Hacking Arrow ( Player )" type="Area2D" node_paths=PackedStringArray("sm", "aim_state")]
+script = ExtResource("1_qoxxn")
+sm = NodePath("State Machine")
+aim_state = NodePath("State Machine/Aim")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(6, 0)
+scale = Vector2(0.1, 0.05)
+texture = ExtResource("1_tb66o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(6, 0)
+shape = SubResource("RectangleShape2D_we6wm")
+
+[node name="State Machine" type="Node" parent="." node_paths=PackedStringArray("First_State")]
+script = ExtResource("2_oks1q")
+First_State = NodePath("Aim")
+
+[node name="Aim" type="Node" parent="State Machine" node_paths=PackedStringArray("Travel_State")]
+script = ExtResource("3_1wnr8")
+Distance_from_center = 20.0
+Travel_State = NodePath("../Travel")
+
+[node name="Travel" type="Node" parent="State Machine" node_paths=PackedStringArray("Aim_State")]
+script = ExtResource("4_mer7p")
+Travel_Speed = 2.0
+Aim_State = NodePath("../Aim")
+
+[node name="Reset" type="Node" parent="State Machine"]
