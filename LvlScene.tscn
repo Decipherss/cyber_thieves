@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://chwf2rm57eie3"]
+
+[ext_resource type="PackedScene" uid="uid://b3jrol7rbn4r7" path="res://Assets/Assets.blend" id="1_0b6j7"]
+[ext_resource type="PackedScene" uid="uid://djhxxsnygx8t7" path="res://Scripts/FPS Controller/FPS Controller.tscn" id="2_e2sgq"]
+[ext_resource type="PackedScene" uid="uid://tftugkqd78yh" path="res://Scripts/CameraSystem/Main Camera.tscn" id="3_gmfnx"]
+
+[node name="MainScene" type="Node3D"]
+
+[node name="Assets" parent="." instance=ExtResource("1_0b6j7")]
+
+[node name="FPS Controller" parent="." instance=ExtResource("2_e2sgq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.19889, 1.39929, 2.89775)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+
+[node name="Main Camera" parent="." instance=ExtResource("3_gmfnx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.34569, 0)
