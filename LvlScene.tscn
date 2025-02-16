@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://chwf2rm57eie3"]
+[gd_scene load_steps=16 format=3 uid="uid://chwf2rm57eie3"]
 
 [ext_resource type="PackedScene" uid="uid://b3jrol7rbn4r7" path="res://Assets/Assets.blend" id="1_0b6j7"]
 [ext_resource type="PackedScene" uid="uid://djhxxsnygx8t7" path="res://Scripts/FPS Controller/FPS Controller.tscn" id="2_e2sgq"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://b1swte5hylo3a" path="res://Assets/ExtraEnvironment/Coctail.fbx" id="7_qphm2"]
 [ext_resource type="Script" path="res://Assets/ExtraEnvironment/Rotator.gd" id="8_suw2p"]
 [ext_resource type="PackedScene" uid="uid://dfiwq1i2vl5lh" path="res://Assets/ExtraEnvironment/PPJam.fbx" id="9_mg1rb"]
+[ext_resource type="AudioStream" uid="uid://bj8ha2evsxrto" path="res://Music/War, fire, extinction.mp3" id="10_yirla"]
 
 [sub_resource type="Environment" id="Environment_v8naj"]
 fog_enabled = true
@@ -235,3 +236,8 @@ script = ExtResource("8_suw2p")
 [node name="PPJam" parent="." instance=ExtResource("9_mg1rb")]
 transform = Transform3D(-0.409207, 0, 0.912442, 0, 1, 0, -0.912442, 0, -0.409207, -78.3138, 52.1702, -24.1424)
 script = ExtResource("8_suw2p")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_yirla")
+volume_db = -8.0
+autoplay = true
