@@ -620,7 +620,12 @@ shape = SubResource("CapsuleShape3D_4b5p2")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 avoidance_enabled = true
-radius = 2.0
+radius = 10.0
+
+[node name="Timer" type="Timer" parent="NavigationAgent3D"]
+wait_time = 45.0
+one_shot = true
+autostart = true
 
 [node name="Robot01" type="Node3D" parent="."]
 transform = Transform3D(-1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, 0.00080903, 0.144184, 0.00121933)

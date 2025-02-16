@@ -25,6 +25,7 @@ func _ready() -> void:
 	# Bodyparts einfärben
 	set_random_color()
 	
+	$NavigationAgent3D/Timer.timeout.connect(queue_free)
 	
 	if not nav_agent.velocity_computed.is_connected(_on_navigation_agent_3d_velocity_computed):
 		nav_agent.velocity_computed.connect(_on_navigation_agent_3d_velocity_computed)
