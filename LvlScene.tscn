@@ -1,7 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://chwf2rm57eie3"]
+[gd_scene load_steps=17 format=3 uid="uid://chwf2rm57eie3"]
 
 [ext_resource type="PackedScene" uid="uid://b3jrol7rbn4r7" path="res://Assets/Assets.blend" id="1_0b6j7"]
 [ext_resource type="PackedScene" uid="uid://djhxxsnygx8t7" path="res://Scripts/FPS Controller/FPS Controller.tscn" id="2_e2sgq"]
+[ext_resource type="PackedScene" uid="uid://c6lofu00da7li" path="res://Assets/Wanted.fbx" id="3_8l8vk"]
 [ext_resource type="PackedScene" uid="uid://tftugkqd78yh" path="res://Scripts/CameraSystem/Main Camera.tscn" id="3_gmfnx"]
 [ext_resource type="PackedScene" uid="uid://b5ua61eq7fj2g" path="res://LeoSandbox/NPC_Spawner.tscn" id="4_r41yv"]
 [ext_resource type="PackedScene" uid="uid://c4bjlxf5wxhuf" path="res://LeoSandbox/DespawnZone.tscn" id="5_r63yv"]
@@ -159,6 +160,24 @@ spot_angle_attenuation = 0.101532
 transform = Transform3D(-0.996371, -0.0822337, -0.0219703, 0.0768652, -0.758402, -0.647239, 0.0365625, -0.646579, 0.761971, -31.5424, -23.5653, -8.67406)
 light_color = Color(0.662745, 1, 1, 1)
 light_energy = 2.0
+
+[node name="Wanted" parent="SpotLights" instance=ExtResource("3_8l8vk")]
+transform = Transform3D(-0.0112746, -7.17118e-08, -0.256111, -0.938385, -0.104216, 0.00270998, -0.345407, 0.283128, 0.000997467, -70.5698, -16.5947, -5.4152)
+
+[node name="Wanted2" parent="SpotLights" instance=ExtResource("3_8l8vk")]
+transform = Transform3D(-0.0112746, -7.17118e-08, -0.256111, -0.938385, -0.104216, 0.00270998, -0.345407, 0.283128, 0.000997467, -44.0784, -21.6567, -7.29211)
+
+[node name="Wanted3" parent="SpotLights" instance=ExtResource("3_8l8vk")]
+transform = Transform3D(0.0171033, -7.17118e-08, 0.256089, 0.938308, -0.104216, -0.004111, 0.345379, 0.283128, -0.00151312, -39.3435, 43.2385, 16.5949)
+
+[node name="Wanted4" parent="SpotLights" instance=ExtResource("3_8l8vk")]
+transform = Transform3D(0.0171033, -7.17118e-08, 0.256089, 0.938308, -0.104216, -0.004111, 0.345379, 0.283128, -0.00151312, 8.43557, 46.0038, 17.6128)
+
+[node name="Wanted5" parent="SpotLights" instance=ExtResource("3_8l8vk")]
+transform = Transform3D(0.0171033, -4.53083e-08, 0.16249, 0.938308, -0.0658446, -0.00260844, 0.345379, 0.178883, -0.000960077, -4.35928, 17.2126, 4.11969)
+
+[node name="Wanted6" parent="SpotLights" instance=ExtResource("3_8l8vk")]
+transform = Transform3D(-0.0385273, -4.51691e-08, -0.162393, -0.937748, -0.0658446, 0.00587581, -0.345173, 0.178884, 0.00216278, -18.2038, -38.3827, -16.169)
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_fwgg5")
