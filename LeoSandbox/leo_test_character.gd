@@ -3,8 +3,13 @@ extends CharacterBody3D
 @onready var nav_agent = $NavigationAgent3D
 @export var speed: float = 3.0
 var target_location: Vector3
+var difficulty: int
+var bankaccount: int
+var time: float
 
 func _ready() -> void:
+	difficulty = randi_range(1, 3)
+	print(difficulty)
 	if not nav_agent.velocity_computed.is_connected(_on_navigation_agent_3d_velocity_computed):
 		nav_agent.velocity_computed.connect(_on_navigation_agent_3d_velocity_computed)
 	
