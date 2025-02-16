@@ -22,6 +22,9 @@ func _physics_process(delta: float) -> void:
 	var _direction = (next_location - global_transform.origin).normalized()
 	velocity = _direction * speed
 	move_and_slide()
+	
+	if _direction.length() > 0.1:
+		look_at(global_transform.origin + _direction, Vector3.UP)
 
 	nav_agent.target_position = target_location
 
