@@ -44,7 +44,7 @@ transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75
 shadow_enabled = true
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.739102, 0.673593, 0, -0.673593, 0.739102, 0, 7.93059, 8.5051)
+transform = Transform3D(1, 0, 0, 0, 0.739102, 0.673593, 0, -0.673593, 0.739102, 0, 8.7269, 13.312)
 
 [node name="Node3D" parent="." instance=ExtResource("1_g2eye")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.23746, 1.48932, 6.63027)
@@ -59,10 +59,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.94457, 1.76998, -7.43913)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.90729, 1.76998, -0.522022)
 
 [node name="Node3D2" parent="." instance=ExtResource("1_g2eye")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.29137, 1.42057, 5.40699)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.37674, 1.42057, 7.25511)
 
 [node name="Node3D3" parent="." instance=ExtResource("1_g2eye")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.96061, 1.48932, 4.88724)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.01142, 1.48932, 7.64409)
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_si422")
