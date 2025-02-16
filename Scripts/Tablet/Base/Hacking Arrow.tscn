@@ -1,27 +1,29 @@
-[gd_scene load_steps=7 format=3 uid="uid://c12rh18yu5osh"]
+[gd_scene load_steps=6 format=3 uid="uid://c12rh18yu5osh"]
 
-[ext_resource type="Script" path="res://Scripts/Hacking Minigame/HackingArrow.gd" id="1_qoxxn"]
-[ext_resource type="Texture2D" uid="uid://dhs1hra7phy11" path="res://icon.svg" id="1_tb66o"]
+[ext_resource type="Script" path="res://Scripts/Tablet/Scripts/HackingArrow.gd" id="1_qoxxn"]
 [ext_resource type="Script" path="res://Scripts/State Machine/StateMachine.gd" id="2_oks1q"]
-[ext_resource type="Script" path="res://Scripts/Hacking Minigame/States/HackingAim.gd" id="3_1wnr8"]
-[ext_resource type="Script" path="res://Scripts/Hacking Minigame/States/HackingTravel.gd" id="4_mer7p"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_we6wm"]
-size = Vector2(12, 6)
+[ext_resource type="Texture2D" uid="uid://dvbdbsuw0b083" path="res://UI/Sprites/ArrowMinigame.png" id="2_poepd"]
+[ext_resource type="Script" path="res://Scripts/Tablet/Arrow States/HackingAim.gd" id="3_1wnr8"]
+[ext_resource type="Script" path="res://Scripts/Tablet/Arrow States/HackingTravel.gd" id="4_mer7p"]
 
 [node name="Hacking Arrow ( Player )" type="Area2D" node_paths=PackedStringArray("sm", "aim_state")]
+scale = Vector2(0.1, 0.1)
 script = ExtResource("1_qoxxn")
 sm = NodePath("State Machine")
 aim_state = NodePath("State Machine/Aim")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 position = Vector2(6, 0)
-scale = Vector2(0.1, 0.05)
-texture = ExtResource("1_tb66o")
+rotation = 1.5708
+scale = Vector2(2, 1)
+texture = ExtResource("2_poepd")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 position = Vector2(6, 0)
-shape = SubResource("RectangleShape2D_we6wm")
+rotation = 1.5708
+scale = Vector2(2, 1)
+build_mode = 1
+polygon = PackedVector2Array(43, 86, 43, 36.1, 10.3, -90, -10.1, -90, -43, 40.1, -43, 77, -36.2, 84.3, 0.299999, 50.3, 36.9, 86)
 
 [node name="State Machine" type="Node" parent="." node_paths=PackedStringArray("First_State")]
 script = ExtResource("2_oks1q")
@@ -29,12 +31,10 @@ First_State = NodePath("Aim")
 
 [node name="Aim" type="Node" parent="State Machine" node_paths=PackedStringArray("Travel_State")]
 script = ExtResource("3_1wnr8")
-Distance_from_center = 20.0
+Distance_from_center = 50.0
 Travel_State = NodePath("../Travel")
 
 [node name="Travel" type="Node" parent="State Machine" node_paths=PackedStringArray("Aim_State")]
 script = ExtResource("4_mer7p")
-Travel_Speed = 2.0
+Travel_Speed = 2000.0
 Aim_State = NodePath("../Aim")
-
-[node name="Reset" type="Node" parent="State Machine"]

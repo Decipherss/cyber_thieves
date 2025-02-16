@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://cwek5x4dihsrd"]
+
+[ext_resource type="Script" path="res://Scripts/Tablet/Scripts/HackingEnd.gd" id="1_8f6q5"]
+[ext_resource type="Texture2D" uid="uid://cev8jhv40uctj" path="res://UI/Sprites/GoalUI.png" id="2_k4cp6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_luqgh"]
+radius = 53.3333
+
+[node name="Hacking End" type="Area2D"]
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_8f6q5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_k4cp6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_luqgh")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

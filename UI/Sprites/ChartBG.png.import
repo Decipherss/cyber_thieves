@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://uvr4gpdna2v4"
-path="res://.godot/imported/PDA_Background.png-1a62621ebbd7b7f0cccf687f87bc2b31.ctex"
+uid="uid://470lnm8mjtag"
+path="res://.godot/imported/ChartBG.png-16dedac263836da7a0034aba7992f885.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://UI/Sprites/PDA_Background.png"
-dest_files=["res://.godot/imported/PDA_Background.png-1a62621ebbd7b7f0cccf687f87bc2b31.ctex"]
+source_file="res://UI/Sprites/ChartBG.png"
+dest_files=["res://.godot/imported/ChartBG.png-16dedac263836da7a0034aba7992f885.ctex"]
 
 [params]
 

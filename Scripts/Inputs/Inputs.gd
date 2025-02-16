@@ -22,7 +22,7 @@ func _ready() -> void:
 	Lock_Mouse = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	_update_mouse_velocity()
 
 	if (Input.is_action_just_pressed("Escape")):

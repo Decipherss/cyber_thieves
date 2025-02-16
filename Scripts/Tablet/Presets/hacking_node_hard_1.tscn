@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://etcittwtjhyn"]
+
+[ext_resource type="PackedScene" uid="uid://ds1nj30vqe7uq" path="res://Scripts/Tablet/Base/HackingNode.tscn" id="1_i47k6"]
+[ext_resource type="PackedScene" uid="uid://tnvtvnxpklay" path="res://Scripts/Tablet/Base/Firewall_Small.tscn" id="2_nn62b"]
+
+[node name="Hacking Node Hard 1" type="Node2D"]
+
+[node name="HackingNode" parent="." instance=ExtResource("1_i47k6")]
+
+[node name="FireWall" parent="." node_paths=PackedStringArray("Center") instance=ExtResource("2_nn62b")]
+position = Vector2(15.3491, 19.7333)
+rotation = 66.8832
+Center = NodePath("../HackingNode")
+Distance = 25.0
+
+[node name="FireWall2" parent="." node_paths=PackedStringArray("Center") instance=ExtResource("2_nn62b")]
+position = Vector2(15.3491, -19.7333)
+rotation = -41.7504
+Center = NodePath("../HackingNode")
+Distance = 25.0
+Speed = -0.1

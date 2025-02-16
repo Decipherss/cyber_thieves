@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://uvr4gpdna2v4"
-path="res://.godot/imported/PDA_Background.png-1a62621ebbd7b7f0cccf687f87bc2b31.ctex"
+uid="uid://bg2bdsat6wgaf"
+path="res://.godot/imported/Infochart Anim.png-ebc09a88e0913c2a0607d3077b9c647c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://UI/Sprites/PDA_Background.png"
-dest_files=["res://.godot/imported/PDA_Background.png-1a62621ebbd7b7f0cccf687f87bc2b31.ctex"]
+source_file="res://UI/Sprites/Infochart Anim.png"
+dest_files=["res://.godot/imported/Infochart Anim.png-ebc09a88e0913c2a0607d3077b9c647c.ctex"]
 
 [params]
 

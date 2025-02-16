@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://uvr4gpdna2v4"
-path="res://.godot/imported/PDA_Background.png-1a62621ebbd7b7f0cccf687f87bc2b31.ctex"
+uid="uid://dvbdbsuw0b083"
+path="res://.godot/imported/ArrowMinigame.png-644cffcf6e863fbd9d7d04153ee3ae9f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://UI/Sprites/PDA_Background.png"
-dest_files=["res://.godot/imported/PDA_Background.png-1a62621ebbd7b7f0cccf687f87bc2b31.ctex"]
+source_file="res://UI/Sprites/ArrowMinigame.png"
+dest_files=["res://.godot/imported/ArrowMinigame.png-644cffcf6e863fbd9d7d04153ee3ae9f.ctex"]
 
 [params]
 

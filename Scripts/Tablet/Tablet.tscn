@@ -1,0 +1,149 @@
+[gd_scene load_steps=20 format=3 uid="uid://ehudage0l5hk"]
+
+[ext_resource type="Script" path="res://Scripts/Tablet/Tablet.gd" id="1_61kqa"]
+[ext_resource type="Script" path="res://Scripts/State Machine/StateMachine.gd" id="1_my7d4"]
+[ext_resource type="Script" path="res://Scripts/Tablet/Hacking States/Standby.gd" id="2_7gdu0"]
+[ext_resource type="Script" path="res://Scripts/Tablet/Hacking States/Hacking.gd" id="2_catnk"]
+[ext_resource type="PackedScene" uid="uid://t635op3d85su" path="res://Scripts/Tablet/Presets/hacking_node_easy_1.tscn" id="3_17pg5"]
+[ext_resource type="PackedScene" uid="uid://dbaa7yj7ve8jh" path="res://Scripts/Tablet/Presets/hacking_node_medium_1.tscn" id="4_pjot7"]
+[ext_resource type="Script" path="res://Scripts/Tablet/Hacking States/Scan.gd" id="4_qmxnc"]
+[ext_resource type="PackedScene" uid="uid://etcittwtjhyn" path="res://Scripts/Tablet/Presets/hacking_node_hard_1.tscn" id="5_1kaow"]
+[ext_resource type="PackedScene" uid="uid://d1386f27hcv1b" path="res://Scripts/Tablet/Base/Hacking Timer.tscn" id="6_3exgw"]
+[ext_resource type="PackedScene" uid="uid://cb3i7oipoo1om" path="res://Scripts/Tablet/Base/ScanText.tscn" id="6_qkm42"]
+[ext_resource type="PackedScene" uid="uid://c12rh18yu5osh" path="res://Scripts/Tablet/Base/Hacking Arrow.tscn" id="7_purhn"]
+[ext_resource type="PackedScene" uid="uid://ds1nj30vqe7uq" path="res://Scripts/Tablet/Base/HackingNode.tscn" id="8_o3ryr"]
+[ext_resource type="PackedScene" uid="uid://bimlq7eo8miyr" path="res://Scripts/Tablet/Base/Hacking Border.tscn" id="9_ci2h0"]
+[ext_resource type="PackedScene" uid="uid://cwek5x4dihsrd" path="res://Scripts/Tablet/Base/Hacking End.tscn" id="10_xi3xx"]
+[ext_resource type="PackedScene" uid="uid://dvckoaobt3oex" path="res://Scripts/Tablet/Base/Begin Hack Anim.tscn" id="11_76eew"]
+[ext_resource type="Texture2D" uid="uid://uvr4gpdna2v4" path="res://UI/Sprites/PDA_Background.png" id="12_pmw1x"]
+[ext_resource type="PackedScene" uid="uid://pxi0gar8jtdg" path="res://Scripts/Tablet/Base/Infochart.tscn" id="13_n8afm"]
+[ext_resource type="FontFile" uid="uid://c7hvpemedctnn" path="res://UI/Fonts/LCDMonoWinTT/LCDM2B__.TTF" id="17_ivn0y"]
+[ext_resource type="PackedScene" uid="uid://bxls3denhjmhi" path="res://Scripts/Tablet/Base/Infochart2.tscn" id="19_n25l0"]
+
+[node name="Tablet" type="Node2D"]
+script = ExtResource("1_61kqa")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(579, 323)
+
+[node name="State Machine" type="Node" parent="." node_paths=PackedStringArray("First_State")]
+script = ExtResource("1_my7d4")
+First_State = NodePath("Standby")
+
+[node name="Standby" type="Node" parent="State Machine"]
+script = ExtResource("2_7gdu0")
+
+[node name="Standby_Text" type="RichTextLabel" parent="State Machine/Standby"]
+custom_minimum_size = Vector2(500, 0)
+offset_left = 161.0
+offset_top = 584.0
+offset_right = 661.0
+offset_bottom = 624.0
+theme_override_colors/default_color = Color(1, 1, 0, 1)
+theme_override_fonts/normal_font = ExtResource("17_ivn0y")
+theme_override_font_sizes/normal_font_size = 20
+text = "Cash: 0"
+
+[node name="Scan" type="Node" parent="State Machine"]
+script = ExtResource("4_qmxnc")
+
+[node name="Scan Text" parent="State Machine/Scan" instance=ExtResource("6_qkm42")]
+position = Vector2(288, 120)
+
+[node name="Hacking" type="Node" parent="State Machine" node_paths=PackedStringArray("position_nodes", "start_position_node", "end_position_node", "timer_position_node", "Standby_State")]
+script = ExtResource("2_catnk")
+position_nodes = [NodePath("Positions/Pos"), NodePath("Positions/Pos2"), NodePath("Positions/Pos3"), NodePath("Positions/Pos4"), NodePath("Positions/Pos5"), NodePath("Positions/Pos6"), NodePath("Positions/Pos7"), NodePath("Positions/Pos8"), NodePath("Positions/Pos9"), NodePath("Positions/Pos11"), NodePath("Positions/Pos12"), NodePath("Positions/Pos13"), NodePath("Positions/Pos14"), NodePath("Positions/Pos15")]
+start_position_node = NodePath("Positions/Start_Pos")
+end_position_node = NodePath("Positions/End_Pos")
+timer_position_node = NodePath("Positions/Timer_Pos")
+easy_nodes = Array[PackedScene]([ExtResource("3_17pg5")])
+medium_nodes = Array[PackedScene]([ExtResource("4_pjot7")])
+hard_nodes = Array[PackedScene]([ExtResource("5_1kaow")])
+timer = ExtResource("6_3exgw")
+arrow = ExtResource("7_purhn")
+start = ExtResource("8_o3ryr")
+border = ExtResource("9_ci2h0")
+end = ExtResource("10_xi3xx")
+Standby_State = NodePath("../Standby")
+
+[node name="Begin Hack Anim" parent="State Machine/Hacking" instance=ExtResource("11_76eew")]
+position = Vector2(605, 301)
+
+[node name="Positions" type="Node" parent="State Machine/Hacking"]
+
+[node name="Start_Pos" type="Node2D" parent="State Machine/Hacking/Positions"]
+position = Vector2(250, 325)
+
+[node name="Timer_Pos" type="Node2D" parent="State Machine/Hacking/Positions"]
+position = Vector2(624, 83)
+
+[node name="End_Pos" type="Node2D" parent="State Machine/Hacking/Positions"]
+position = Vector2(968, 325)
+
+[node name="Pos" type="Node2D" parent="State Machine/Hacking/Positions"]
+position = Vector2(300, 175)
+
+[node name="Pos2" type="Node2D" parent="State Machine/Hacking/Positions"]
+position = Vector2(450, 175)
+
+[node name="Pos3" type="Node2D" parent="State Machine/Hacking/Positions"]
+position = Vector2(600, 175)
+
+[node name="Pos4" type="Node2D" parent="State Machine/Hacking/Positions"]
+position = Vector2(750, 175)
+
+[node name="Pos5" type="Node2D" parent="State Machine/Hacking/Positions"]
+position = Vector2(900, 175)
+
+[node name="Pos6" type="Node2D" parent="State Machine/Hacking/Positions"]
+position = Vector2(350, 325)
+
+[node name="Pos7" type="Node2D" parent="State Machine/Hacking/Positions"]
+position = Vector2(500, 325)
+
+[node name="Pos8" type="Node2D" parent="State Machine/Hacking/Positions"]
+position = Vector2(650, 325)
+
+[node name="Pos9" type="Node2D" parent="State Machine/Hacking/Positions"]
+position = Vector2(800, 325)
+
+[node name="Pos11" type="Node2D" parent="State Machine/Hacking/Positions"]
+position = Vector2(300, 475)
+
+[node name="Pos12" type="Node2D" parent="State Machine/Hacking/Positions"]
+position = Vector2(450, 475)
+
+[node name="Pos13" type="Node2D" parent="State Machine/Hacking/Positions"]
+position = Vector2(600, 475)
+
+[node name="Pos14" type="Node2D" parent="State Machine/Hacking/Positions"]
+position = Vector2(750, 475)
+
+[node name="Pos15" type="Node2D" parent="State Machine/Hacking/Positions"]
+position = Vector2(900, 475)
+
+[node name="Nodes Spawned" type="Node" parent="State Machine/Hacking"]
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(600, 340)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("12_pmw1x")
+
+[node name="Infochart Anim" parent="." instance=ExtResource("13_n8afm")]
+position = Vector2(166, 206)
+scale = Vector2(0.25, 0.25)
+
+[node name="Cash" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(500, 0)
+offset_left = 161.0
+offset_top = 584.0
+offset_right = 661.0
+offset_bottom = 624.0
+theme_override_colors/default_color = Color(1, 1, 0, 1)
+theme_override_fonts/normal_font = ExtResource("17_ivn0y")
+theme_override_font_sizes/normal_font_size = 20
+text = "Cash: 0"
+
+[node name="Infochart Anim2" parent="." instance=ExtResource("19_n25l0")]
+position = Vector2(1004, 144)
+scale = Vector2(0.2, 0.2)

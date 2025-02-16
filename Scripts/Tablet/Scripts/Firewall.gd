@@ -2,11 +2,17 @@
 class_name Firewall
 extends Area2D
 
-@export var Center:Node2D
+@export var Center:HackingNode
 @export var Distance:float = 10
 @export var Speed:float = 10
 
+var random:RandomNumberGenerator
 var time:float = 0
+
+func _ready() -> void:
+	random = RandomNumberGenerator.new()
+	time = random.randf()
+	
 func _process(delta: float) -> void:	
 	if !Center:
 		return

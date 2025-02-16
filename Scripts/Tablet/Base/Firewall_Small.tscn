@@ -1,10 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://tnvtvnxpklay"]
 
-[ext_resource type="Script" path="res://Scripts/Hacking Minigame/Firewall.gd" id="1_cwu0r"]
+[ext_resource type="Script" path="res://Scripts/Tablet/Scripts/Firewall.gd" id="1_cwu0r"]
 [ext_resource type="Texture2D" uid="uid://cg81a1fed3ab7" path="res://UI/Sprites/FirewallSmall.png" id="2_q6u5l"]
 
 [node name="FireWall" type="Area2D"]
-scale = Vector2(0.05, 0.05)
+scale = Vector2(0.125, 0.125)
 script = ExtResource("1_cwu0r")
 Distance = 30.0
 Speed = 0.1
@@ -15,7 +15,6 @@ texture = ExtResource("2_q6u5l")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 rotation = -0.785398
-build_mode = 1
 polygon = PackedVector2Array(80, -154, 80, -146.6, 17.7, -129, 6.60001, -129, -43.5, -91, -52.9, -91, -114.9, -12, -122.3, -12, -151.3, 80, -158.8, 80, -153.2, 150, -105, 150, -105, 80.1, -71, 30.1, -71, 6.10001, -5, -59.9, -5, -62.4, 83, -99.4, 83, -100.2, 140.1, -101, 152.7, -101, 150, -139.7, 150, -154)
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

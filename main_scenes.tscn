@@ -1,8 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://btrime2rfk55t"]
+[gd_scene load_steps=10 format=3 uid="uid://btrime2rfk55t"]
 
 [ext_resource type="PackedScene" uid="uid://tftugkqd78yh" path="res://Scripts/CameraSystem/Main Camera.tscn" id="1_ecjq4"]
 [ext_resource type="PackedScene" uid="uid://djhxxsnygx8t7" path="res://Scripts/FPS Controller/FPS Controller.tscn" id="2_4cq6o"]
-[ext_resource type="PackedScene" uid="uid://ehudage0l5hk" path="res://Scripts/Hacking Minigame/HackingMinigameScene.tscn" id="3_p4wdx"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_lisd0"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -54,8 +53,6 @@ surface_material_override/0 = SubResource("StandardMaterial3D_pp20l")
 
 [node name="FPS Controller" parent="." instance=ExtResource("2_4cq6o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.19889, 0.344779, 0.630171)
-
-[node name="Hacking Minigame" parent="." instance=ExtResource("3_p4wdx")]
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.04819, 0)
