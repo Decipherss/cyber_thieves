@@ -3,6 +3,7 @@ extends Node3D
 @export var npc_scene: PackedScene
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	spawn_npc()
 	$Timer.timeout.connect(spawn_npc)
 
 func spawn_npc():
