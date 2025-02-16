@@ -1,22 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://b5ua61eq7fj2g"]
+[gd_scene load_steps=3 format=3 uid="uid://b5ua61eq7fj2g"]
 
 [ext_resource type="Script" path="res://LeoSandbox/Spawner.gd" id="1_pldkm"]
 [ext_resource type="PackedScene" uid="uid://bn43avrjgqyp1" path="res://LeoSandbox/LeoTestCharacter.tscn" id="2_qqx3t"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fndgm"]
-albedo_color = Color(1, 0.498039, 0, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_mf2sm"]
 
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_pldkm")
 npc_scene = ExtResource("2_qqx3t")
 
 [node name="Marker3D" type="Marker3D" parent="."]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-material_override = SubResource("StandardMaterial3D_fndgm")
-mesh = SubResource("BoxMesh_mf2sm")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 5.0

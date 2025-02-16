@@ -611,6 +611,7 @@ states/idle/position = Vector2(381, 97)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_tuj1d")]
 
 [node name="NPC" type="CharacterBody3D" groups=["NPC"]]
+motion_mode = 1
 script = ExtResource("1_tl8q2")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -625,27 +626,27 @@ radius = 2.0
 transform = Transform3D(-1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, 0.00080903, 0.144184, 0.00121933)
 
 [node name="Cube_004" type="MeshInstance3D" parent="Robot01"]
-transform = Transform3D(100, 0, 0, 0, -4.37114e-06, 100, 0, -100, -4.37114e-06, 0, 0, 0)
+transform = Transform3D(100, 0, 0, 0, -0.000361999, 100, 0, -100, -0.000361999, 0, 0, 0)
 mesh = SubResource("ArrayMesh_yqgj7")
 skeleton = NodePath("")
 
 [node name="Cube_005" type="MeshInstance3D" parent="Robot01"]
-transform = Transform3D(100, 0, 0, 0, -4.37114e-06, 100, 0, -100, -4.37114e-06, 0, 0, 0)
+transform = Transform3D(100, 0, 0, 0, -0.000361999, 100, 0, -100, -0.000361999, 0, 0, 0)
 mesh = SubResource("ArrayMesh_yf3q8")
 skeleton = NodePath("")
 
 [node name="Cube_006" type="MeshInstance3D" parent="Robot01"]
-transform = Transform3D(100, 0, 0, 0, -4.37114e-06, 100, 0, -100, -4.37114e-06, 0, 0, 0)
+transform = Transform3D(100, 0, 0, 0, -0.000361999, 100, 0, -100, -0.000361999, 0, 0, 0)
 mesh = SubResource("ArrayMesh_eg6u8")
 skeleton = NodePath("")
 
 [node name="Cube_007" type="MeshInstance3D" parent="Robot01"]
-transform = Transform3D(100, 0, 0, 0, -4.37114e-06, 100, 0, -100, -4.37114e-06, 0, 0, 0)
+transform = Transform3D(100, 0, 0, 0, -0.000361999, 100, 0, -100, -0.000361999, 0, 0, 0)
 mesh = SubResource("ArrayMesh_4cey1")
 skeleton = NodePath("")
 
 [node name="Plane_001" type="MeshInstance3D" parent="Robot01"]
-transform = Transform3D(100, 0, 0, 0, -4.37114e-06, 100, 0, -100, -4.37114e-06, 0, 0, 0)
+transform = Transform3D(100, 0, 0, 0, -0.000361999, 100, 0, -100, -0.000361999, 0, 0, 0)
 transparency = 1.0
 mesh = SubResource("ArrayMesh_xjn2p")
 skeleton = NodePath("")
