@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://chwf2rm57eie3"]
+[gd_scene load_steps=13 format=3 uid="uid://chwf2rm57eie3"]
 
 [ext_resource type="PackedScene" uid="uid://b3jrol7rbn4r7" path="res://Assets/Assets.blend" id="1_0b6j7"]
 [ext_resource type="PackedScene" uid="uid://djhxxsnygx8t7" path="res://Scripts/FPS Controller/FPS Controller.tscn" id="2_e2sgq"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b5ua61eq7fj2g" path="res://LeoSandbox/NPC_Spawner.tscn" id="4_r41yv"]
 [ext_resource type="PackedScene" uid="uid://c4bjlxf5wxhuf" path="res://LeoSandbox/DespawnZone.tscn" id="5_r63yv"]
 [ext_resource type="PackedScene" uid="uid://dtp86xw7010ad" path="res://Assets/RobotChef.fbx" id="6_r51hj"]
+[ext_resource type="PackedScene" uid="uid://b1swte5hylo3a" path="res://Assets/ExtraEnvironment/Coctail.fbx" id="7_qphm2"]
 
 [sub_resource type="Environment" id="Environment_v8naj"]
 fog_enabled = true
@@ -40,6 +41,13 @@ tracks/1/path = NodePath("../RobotChef2")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = PackedFloat32Array(0, 1, 50.619, 0.413429, 55.1604, 1.06667, 1, 50.619, 0.59872, 55.1604, 2, 1, 50.619, 0.413429, 55.1604)
+tracks/2/type = "position_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../RobotChef3")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, 56.8598, 0.413429, 33.2868, 1, 1, 56.8598, 0.666508, 33.2868, 2, 1, 56.8598, 0.413429, 33.2868)
 
 [sub_resource type="Animation" id="Animation_b0r03"]
 length = 0.001
@@ -57,6 +65,13 @@ tracks/1/path = NodePath("../RobotChef2")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = PackedFloat32Array(0, 1, 50.619, 0.413429, 55.1604)
+tracks/2/type = "position_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../RobotChef3")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, 56.8598, 0.413429, 33.2868)
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_63twh"]
 _data = {
@@ -175,7 +190,7 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -68.576, 0.682013, 5.86131)
 [node name="Area3D7" parent="." instance=ExtResource("5_r63yv")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -69.1945, 0.682013, 25.4886)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationLvl" type="AnimationPlayer" parent="."]
 root_node = NodePath("../RobotChef")
 libraries = {
 "": SubResource("AnimationLibrary_63twh")
@@ -187,3 +202,9 @@ transform = Transform3D(-0.999997, 0, 0.0023388, 0, 1, 0, -0.0023388, 0, -0.9999
 
 [node name="RobotChef2" parent="." instance=ExtResource("6_r51hj")]
 transform = Transform3D(0.0212564, 0, -0.999774, 0, 1, 0, 0.999774, 0, 0.0212564, 50.619, 0.413429, 55.1604)
+
+[node name="RobotChef3" parent="." instance=ExtResource("6_r51hj")]
+transform = Transform3D(0.0212564, 0, -0.999774, 0, 1, 0, 0.999774, 0, 0.0212564, 56.8598, 0.413429, 33.2868)
+
+[node name="Coctail" parent="." instance=ExtResource("7_qphm2")]
+transform = Transform3D(0.988707, 0, 0.149861, 0, 1, 0, -0.149861, 0, 0.988707, 11.4042, 42.1581, 79.4541)
