@@ -9,11 +9,58 @@
 [node name="Assets" parent="." instance=ExtResource("1_0b6j7")]
 
 [node name="FPS Controller" parent="." instance=ExtResource("2_e2sgq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.19889, 1.39929, 2.89775)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.35079, 1.93799, 4.95308)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+light_color = Color(0.843137, 0.729412, 1, 1)
+light_energy = 0.457
+light_indirect_energy = 0.798
+light_volumetric_fog_energy = 12.106
+sky_mode = 1
 
 [node name="Main Camera" parent="." instance=ExtResource("3_gmfnx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.34569, 0)
+
+[node name="SpotLights" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.345429, 0.938445, 0, -0.938445, -0.345429, 5.81689, 3.37073, 27.826)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="SpotLights"]
+light_color = Color(0.662745, 1, 1, 1)
+light_energy = 2.0
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="SpotLights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50.6392, -0.566742, -0.208611)
+light_color = Color(0.662745, 1, 1, 1)
+light_energy = 2.0
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="SpotLights"]
+transform = Transform3D(-0.998493, -0.0536724, -0.0114609, 0.048306, -0.760348, -0.647717, 0.0260503, -0.647295, 0.761794, -41.0666, 29.9331, 11.018)
+light_color = Color(0.662745, 1, 1, 1)
+light_energy = 2.0
+
+[node name="SpotLight3D4" type="SpotLight3D" parent="SpotLights"]
+transform = Transform3D(0.999704, -0.0189554, -0.0152285, 0.0189441, 0.99982, -0.000888526, 0.0152426, 0.000599742, 0.999884, -22.4641, 37.1626, 13.6791)
+light_color = Color(0.662745, 1, 1, 1)
+light_energy = 2.0
+
+[node name="SpotLight3D5" type="SpotLight3D" parent="SpotLights"]
+transform = Transform3D(0.999704, -0.0189554, -0.0152285, 0.0189441, 0.99982, -0.000888526, 0.0152426, 0.000599742, 0.999884, 29.6335, 35.8203, 13.185)
+light_color = Color(0.662745, 1, 1, 1)
+light_energy = 2.0
+
+[node name="SpotLight3D6" type="SpotLight3D" parent="SpotLights"]
+transform = Transform3D(0.905826, 0.400037, 0.139462, -0.400186, 0.915999, -0.0282142, -0.139034, -0.0302536, 0.989825, 44.9135, 0.515366, 0.189699)
+light_color = Color(0.662745, 1, 1, 1)
+light_energy = 2.0
+
+[node name="SpotLight3D7" type="SpotLight3D" parent="SpotLights"]
+transform = Transform3D(-0.996371, -0.0822337, -0.0219703, 0.0768652, -0.758402, -0.647239, 0.0365625, -0.646579, 0.761971, -2.67392, -25.6419, -9.43844)
+light_color = Color(0.662745, 1, 1, 1)
+light_energy = 2.0
+
+[node name="SpotLight3D8" type="SpotLight3D" parent="SpotLights"]
+transform = Transform3D(-0.996371, -0.0822337, -0.0219703, 0.0768652, -0.758402, -0.647239, 0.0365625, -0.646579, 0.761971, -31.5424, -23.5653, -8.67406)
+light_color = Color(0.662745, 1, 1, 1)
+light_energy = 2.0
