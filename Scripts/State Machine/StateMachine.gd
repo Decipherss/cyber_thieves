@@ -44,6 +44,5 @@ func Change_State(state:State,allow_transition_to_self:bool = false) -> bool:
 		
 	active_state = state
 	active_state.On_Enter(self)
-	
 	return true
 	

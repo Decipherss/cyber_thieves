@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://ehudage0l5hk"]
+[gd_scene load_steps=21 format=3 uid="uid://ehudage0l5hk"]
 
 [ext_resource type="Script" path="res://Scripts/Tablet/Tablet.gd" id="1_61kqa"]
 [ext_resource type="Script" path="res://Scripts/State Machine/StateMachine.gd" id="1_my7d4"]
@@ -20,37 +20,36 @@
 [ext_resource type="FontFile" uid="uid://c7hvpemedctnn" path="res://UI/Fonts/LCDMonoWinTT/LCDM2B__.TTF" id="17_ivn0y"]
 [ext_resource type="PackedScene" uid="uid://bxls3denhjmhi" path="res://Scripts/Tablet/Base/Infochart2.tscn" id="19_n25l0"]
 
-[node name="Tablet" type="Node2D"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_bxuiw"]
+viewport_path = NodePath("SubViewport")
+
+[node name="Tablet" type="Sprite3D"]
+texture = SubResource("ViewportTexture_bxuiw")
 script = ExtResource("1_61kqa")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(579, 323)
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+size = Vector2i(1200, 700)
 
-[node name="State Machine" type="Node" parent="." node_paths=PackedStringArray("First_State")]
+[node name="Background" type="Sprite2D" parent="SubViewport"]
+position = Vector2(600, 340)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("12_pmw1x")
+
+[node name="State Machine" type="Node" parent="SubViewport" node_paths=PackedStringArray("First_State")]
 script = ExtResource("1_my7d4")
 First_State = NodePath("Standby")
 
-[node name="Standby" type="Node" parent="State Machine"]
+[node name="Standby" type="Node" parent="SubViewport/State Machine"]
 script = ExtResource("2_7gdu0")
 
-[node name="Standby_Text" type="RichTextLabel" parent="State Machine/Standby"]
-custom_minimum_size = Vector2(500, 0)
-offset_left = 161.0
-offset_top = 584.0
-offset_right = 661.0
-offset_bottom = 624.0
-theme_override_colors/default_color = Color(1, 1, 0, 1)
-theme_override_fonts/normal_font = ExtResource("17_ivn0y")
-theme_override_font_sizes/normal_font_size = 20
-text = "Cash: 0"
-
-[node name="Scan" type="Node" parent="State Machine"]
+[node name="Scan" type="Node" parent="SubViewport/State Machine"]
 script = ExtResource("4_qmxnc")
 
-[node name="Scan Text" parent="State Machine/Scan" instance=ExtResource("6_qkm42")]
+[node name="Scan Text" parent="SubViewport/State Machine/Scan" instance=ExtResource("6_qkm42")]
 position = Vector2(288, 120)
 
-[node name="Hacking" type="Node" parent="State Machine" node_paths=PackedStringArray("position_nodes", "start_position_node", "end_position_node", "timer_position_node", "Standby_State")]
+[node name="Hacking" type="Node" parent="SubViewport/State Machine" node_paths=PackedStringArray("position_nodes", "start_position_node", "end_position_node", "timer_position_node", "Standby_State")]
 script = ExtResource("2_catnk")
 position_nodes = [NodePath("Positions/Pos"), NodePath("Positions/Pos2"), NodePath("Positions/Pos3"), NodePath("Positions/Pos4"), NodePath("Positions/Pos5"), NodePath("Positions/Pos6"), NodePath("Positions/Pos7"), NodePath("Positions/Pos8"), NodePath("Positions/Pos9"), NodePath("Positions/Pos11"), NodePath("Positions/Pos12"), NodePath("Positions/Pos13"), NodePath("Positions/Pos14"), NodePath("Positions/Pos15")]
 start_position_node = NodePath("Positions/Start_Pos")
@@ -66,74 +65,69 @@ border = ExtResource("9_ci2h0")
 end = ExtResource("10_xi3xx")
 Standby_State = NodePath("../Standby")
 
-[node name="Begin Hack Anim" parent="State Machine/Hacking" instance=ExtResource("11_76eew")]
+[node name="Begin Hack Anim" parent="SubViewport/State Machine/Hacking" instance=ExtResource("11_76eew")]
 position = Vector2(605, 301)
 
-[node name="Positions" type="Node" parent="State Machine/Hacking"]
+[node name="Positions" type="Node" parent="SubViewport/State Machine/Hacking"]
 
-[node name="Start_Pos" type="Node2D" parent="State Machine/Hacking/Positions"]
+[node name="Start_Pos" type="Node2D" parent="SubViewport/State Machine/Hacking/Positions"]
 position = Vector2(250, 325)
 
-[node name="Timer_Pos" type="Node2D" parent="State Machine/Hacking/Positions"]
+[node name="Timer_Pos" type="Node2D" parent="SubViewport/State Machine/Hacking/Positions"]
 position = Vector2(624, 83)
 
-[node name="End_Pos" type="Node2D" parent="State Machine/Hacking/Positions"]
+[node name="End_Pos" type="Node2D" parent="SubViewport/State Machine/Hacking/Positions"]
 position = Vector2(968, 325)
 
-[node name="Pos" type="Node2D" parent="State Machine/Hacking/Positions"]
+[node name="Pos" type="Node2D" parent="SubViewport/State Machine/Hacking/Positions"]
 position = Vector2(300, 175)
 
-[node name="Pos2" type="Node2D" parent="State Machine/Hacking/Positions"]
+[node name="Pos2" type="Node2D" parent="SubViewport/State Machine/Hacking/Positions"]
 position = Vector2(450, 175)
 
-[node name="Pos3" type="Node2D" parent="State Machine/Hacking/Positions"]
+[node name="Pos3" type="Node2D" parent="SubViewport/State Machine/Hacking/Positions"]
 position = Vector2(600, 175)
 
-[node name="Pos4" type="Node2D" parent="State Machine/Hacking/Positions"]
+[node name="Pos4" type="Node2D" parent="SubViewport/State Machine/Hacking/Positions"]
 position = Vector2(750, 175)
 
-[node name="Pos5" type="Node2D" parent="State Machine/Hacking/Positions"]
+[node name="Pos5" type="Node2D" parent="SubViewport/State Machine/Hacking/Positions"]
 position = Vector2(900, 175)
 
-[node name="Pos6" type="Node2D" parent="State Machine/Hacking/Positions"]
+[node name="Pos6" type="Node2D" parent="SubViewport/State Machine/Hacking/Positions"]
 position = Vector2(350, 325)
 
-[node name="Pos7" type="Node2D" parent="State Machine/Hacking/Positions"]
+[node name="Pos7" type="Node2D" parent="SubViewport/State Machine/Hacking/Positions"]
 position = Vector2(500, 325)
 
-[node name="Pos8" type="Node2D" parent="State Machine/Hacking/Positions"]
+[node name="Pos8" type="Node2D" parent="SubViewport/State Machine/Hacking/Positions"]
 position = Vector2(650, 325)
 
-[node name="Pos9" type="Node2D" parent="State Machine/Hacking/Positions"]
+[node name="Pos9" type="Node2D" parent="SubViewport/State Machine/Hacking/Positions"]
 position = Vector2(800, 325)
 
-[node name="Pos11" type="Node2D" parent="State Machine/Hacking/Positions"]
+[node name="Pos11" type="Node2D" parent="SubViewport/State Machine/Hacking/Positions"]
 position = Vector2(300, 475)
 
-[node name="Pos12" type="Node2D" parent="State Machine/Hacking/Positions"]
+[node name="Pos12" type="Node2D" parent="SubViewport/State Machine/Hacking/Positions"]
 position = Vector2(450, 475)
 
-[node name="Pos13" type="Node2D" parent="State Machine/Hacking/Positions"]
+[node name="Pos13" type="Node2D" parent="SubViewport/State Machine/Hacking/Positions"]
 position = Vector2(600, 475)
 
-[node name="Pos14" type="Node2D" parent="State Machine/Hacking/Positions"]
+[node name="Pos14" type="Node2D" parent="SubViewport/State Machine/Hacking/Positions"]
 position = Vector2(750, 475)
 
-[node name="Pos15" type="Node2D" parent="State Machine/Hacking/Positions"]
+[node name="Pos15" type="Node2D" parent="SubViewport/State Machine/Hacking/Positions"]
 position = Vector2(900, 475)
 
-[node name="Nodes Spawned" type="Node" parent="State Machine/Hacking"]
+[node name="Nodes Spawned" type="Node" parent="SubViewport/State Machine/Hacking"]
 
-[node name="Background" type="Sprite2D" parent="."]
-position = Vector2(600, 340)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("12_pmw1x")
-
-[node name="Infochart Anim" parent="." instance=ExtResource("13_n8afm")]
+[node name="Infochart Anim" parent="SubViewport" instance=ExtResource("13_n8afm")]
 position = Vector2(166, 206)
 scale = Vector2(0.25, 0.25)
 
-[node name="Cash" type="RichTextLabel" parent="."]
+[node name="Cash" type="RichTextLabel" parent="SubViewport"]
 custom_minimum_size = Vector2(500, 0)
 offset_left = 161.0
 offset_top = 584.0
@@ -144,6 +138,6 @@ theme_override_fonts/normal_font = ExtResource("17_ivn0y")
 theme_override_font_sizes/normal_font_size = 20
 text = "Cash: 0"
 
-[node name="Infochart Anim2" parent="." instance=ExtResource("19_n25l0")]
+[node name="Infochart Anim2" parent="SubViewport" instance=ExtResource("19_n25l0")]
 position = Vector2(1004, 144)
 scale = Vector2(0.2, 0.2)

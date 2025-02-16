@@ -5,9 +5,8 @@ var difficulty:int = 1
 var time:int = 10
 
 @onready var node_parent: Node = $"Nodes Spawned"
-@onready var hacking_timer: HackingTimer = $"Hacking Timer"
 @onready var begin_hack_anim: Node2D = $"Begin Hack Anim"
-@onready var tablet: Tablet = $"../.."
+@onready var tablet: Tablet = $"../../.."
 
 @export_category("Positions")
 @export var position_nodes:Array[Node2D]

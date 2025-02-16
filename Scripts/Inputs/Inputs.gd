@@ -16,7 +16,13 @@ var Lock_Mouse:bool = true
 
 var Hack:bool:
 	get: return Input.is_action_just_pressed("Hack")
-
+	
+var Escape:bool:
+	get: return Input.is_action_just_pressed("Escape")
+	
+var Show_Tablet:bool:
+	get: return Input.is_action_just_pressed("Show Tablet")
+	
 func _ready() -> void:
 	last_mouse_position = Mouse_Position
 	Lock_Mouse = true
@@ -25,7 +31,7 @@ func _ready() -> void:
 func _physics_process(_delta: float) -> void:
 	_update_mouse_velocity()
 
-	if (Input.is_action_just_pressed("Escape")):
+	if (Escape):
 		Lock_Mouse = !Lock_Mouse
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE if !Lock_Mouse else Input.MOUSE_MODE_HIDDEN)
 
