@@ -10,8 +10,8 @@ config_version=5
 
 [application]
 
-config/name="Cyber_Thieves"
-run/main_scene="res://main_scenes.tscn"
+config/name="Cyber Thief"
+run/main_scene="res://LvlScene.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 

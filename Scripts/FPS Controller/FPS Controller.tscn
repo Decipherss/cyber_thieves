@@ -101,17 +101,19 @@ _data = {
 }
 
 [node name="FPS Controller" type="CharacterBody3D" node_paths=PackedStringArray("camera")]
+floor_stop_on_slope = false
+floor_block_on_wall = false
 script = ExtResource("1_aeyxv")
 camera = NodePath("Virtual Camera")
 
 [node name="Virtual Camera" parent="." instance=ExtResource("2_ol4uu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.10709, 0)
 
 [node name="RayCast3D" type="RayCast3D" parent="Virtual Camera"]
 target_position = Vector3(0, 0, -1)
 
 [node name="Tablet" parent="Virtual Camera" instance=ExtResource("7_6rr8x")]
-transform = Transform3D(0.1, 0, 0, 0, 0.0984808, 0.0173648, 0, -0.0173648, 0.0984808, 0, -0.130547, -0.674041)
+transform = Transform3D(0.1, 0, 0, 0, 0.0984808, 0.0173648, 0, -0.0173648, 0.0984808, 0, 0, -0.674)
 texture = SubResource("ViewportTexture_yksgd")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -124,6 +126,7 @@ First_State = NodePath("Move")
 script = ExtResource("3_xodot")
 controller = NodePath("../..")
 camera = NodePath("../../Virtual Camera")
+speed = 20.0
 
 [node name="Idle" type="Node" parent="Controller State Machine" node_paths=PackedStringArray("controller", "camera")]
 script = ExtResource("6_ewtc6")
