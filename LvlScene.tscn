@@ -1,23 +1,30 @@
-[gd_scene load_steps=4 format=3 uid="uid://chwf2rm57eie3"]
+[gd_scene load_steps=5 format=3 uid="uid://chwf2rm57eie3"]
 
 [ext_resource type="PackedScene" uid="uid://b3jrol7rbn4r7" path="res://Assets/Assets.blend" id="1_0b6j7"]
 [ext_resource type="PackedScene" uid="uid://djhxxsnygx8t7" path="res://Scripts/FPS Controller/FPS Controller.tscn" id="2_e2sgq"]
 [ext_resource type="PackedScene" uid="uid://tftugkqd78yh" path="res://Scripts/CameraSystem/Main Camera.tscn" id="3_gmfnx"]
+
+[sub_resource type="Environment" id="Environment_v8naj"]
+fog_enabled = true
+fog_light_energy = 0.04
+fog_density = 0.005
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0175
+volumetric_fog_albedo = Color(0.486275, 0.72549, 0.635294, 1)
 
 [node name="MainScene" type="Node3D"]
 
 [node name="Assets" parent="." instance=ExtResource("1_0b6j7")]
 
 [node name="FPS Controller" parent="." instance=ExtResource("2_e2sgq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.35079, 1.93799, 4.95308)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.6259, 1.93799, 33.2833)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_v8naj")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 light_color = Color(0.843137, 0.729412, 1, 1)
-light_energy = 0.457
-light_indirect_energy = 0.798
-light_volumetric_fog_energy = 12.106
 sky_mode = 1
 
 [node name="Main Camera" parent="." instance=ExtResource("3_gmfnx")]
