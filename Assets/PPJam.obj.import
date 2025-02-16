@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://drxkeh8r8kg3a"
+path="res://.godot/imported/PPJam.obj-c30d84f4b6549fa5e3d497c808bd7e1d.mesh"
+
+[deps]
+
+files=["res://.godot/imported/PPJam.obj-c30d84f4b6549fa5e3d497c808bd7e1d.mesh"]
+
+source_file="res://Assets/PPJam.obj"
+dest_files=["res://.godot/imported/PPJam.obj-c30d84f4b6549fa5e3d497c808bd7e1d.mesh", "res://.godot/imported/PPJam.obj-c30d84f4b6549fa5e3d497c808bd7e1d.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

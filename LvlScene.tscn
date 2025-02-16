@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://chwf2rm57eie3"]
+[gd_scene load_steps=15 format=3 uid="uid://chwf2rm57eie3"]
 
 [ext_resource type="PackedScene" uid="uid://b3jrol7rbn4r7" path="res://Assets/Assets.blend" id="1_0b6j7"]
 [ext_resource type="PackedScene" uid="uid://djhxxsnygx8t7" path="res://Scripts/FPS Controller/FPS Controller.tscn" id="2_e2sgq"]
@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://c4bjlxf5wxhuf" path="res://LeoSandbox/DespawnZone.tscn" id="5_r63yv"]
 [ext_resource type="PackedScene" uid="uid://dtp86xw7010ad" path="res://Assets/RobotChef.fbx" id="6_r51hj"]
 [ext_resource type="PackedScene" uid="uid://b1swte5hylo3a" path="res://Assets/ExtraEnvironment/Coctail.fbx" id="7_qphm2"]
+[ext_resource type="Script" path="res://Assets/ExtraEnvironment/Rotator.gd" id="8_suw2p"]
+[ext_resource type="PackedScene" uid="uid://dfiwq1i2vl5lh" path="res://Assets/ExtraEnvironment/PPJam.fbx" id="9_mg1rb"]
 
 [sub_resource type="Environment" id="Environment_v8naj"]
 fog_enabled = true
@@ -132,6 +134,26 @@ transform = Transform3D(-0.996371, -0.0822337, -0.0219703, 0.0768652, -0.758402,
 light_color = Color(0.662745, 1, 1, 1)
 light_energy = 2.0
 
+[node name="SpotLight3D9" type="SpotLight3D" parent="SpotLights"]
+transform = Transform3D(-0.996371, -0.0822337, -0.0219703, -0.0849454, 0.944228, 0.318146, -0.00541735, 0.318858, -0.947787, 5.20112, -56.6862, 7.52552)
+light_color = Color(0.662745, 1, 1, 1)
+light_energy = 2.0
+spot_range = 21.851
+spot_attenuation = -0.84
+spot_angle = 31.67
+spot_angle_attenuation = 0.101532
+
+[node name="SpotLight3D10" type="SpotLight3D" parent="SpotLights"]
+transform = Transform3D(-0.996371, -0.0822337, -0.0219703, -0.0849454, 0.944228, 0.318146, -0.00541736, 0.318858, -0.947787, -83.8484, 37.0202, 52.5861)
+light_color = Color(0.662745, 1, 1, 1)
+light_energy = 2.0
+distance_fade_begin = 0.0
+distance_fade_length = 0.0
+spot_range = 25.386
+spot_attenuation = -0.84
+spot_angle = 39.33
+spot_angle_attenuation = 0.101532
+
 [node name="SpotLight3D8" type="SpotLight3D" parent="SpotLights"]
 transform = Transform3D(-0.996371, -0.0822337, -0.0219703, 0.0768652, -0.758402, -0.647239, 0.0365625, -0.646579, 0.761971, -31.5424, -23.5653, -8.67406)
 light_color = Color(0.662745, 1, 1, 1)
@@ -208,3 +230,8 @@ transform = Transform3D(0.0212564, 0, -0.999774, 0, 1, 0, 0.999774, 0, 0.0212564
 
 [node name="Coctail" parent="." instance=ExtResource("7_qphm2")]
 transform = Transform3D(0.988707, 0, 0.149861, 0, 1, 0, -0.149861, 0, 0.988707, 11.4042, 42.1581, 79.4541)
+script = ExtResource("8_suw2p")
+
+[node name="PPJam" parent="." instance=ExtResource("9_mg1rb")]
+transform = Transform3D(-0.409207, 0, 0.912442, 0, 1, 0, -0.912442, 0, -0.409207, -78.3138, 52.1702, -24.1424)
+script = ExtResource("8_suw2p")
