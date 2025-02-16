@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://ehudage0l5hk"]
+[gd_scene load_steps=22 format=3 uid="uid://ehudage0l5hk"]
 
 [ext_resource type="Script" path="res://Scripts/Tablet/Tablet.gd" id="1_61kqa"]
 [ext_resource type="Script" path="res://Scripts/State Machine/StateMachine.gd" id="1_my7d4"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://d1386f27hcv1b" path="res://Scripts/Tablet/Base/Hacking Timer.tscn" id="6_3exgw"]
 [ext_resource type="PackedScene" uid="uid://cb3i7oipoo1om" path="res://Scripts/Tablet/Base/ScanText.tscn" id="6_qkm42"]
 [ext_resource type="PackedScene" uid="uid://c12rh18yu5osh" path="res://Scripts/Tablet/Base/Hacking Arrow.tscn" id="7_purhn"]
+[ext_resource type="PackedScene" uid="uid://j6st83jmd46g" path="res://Scripts/Tablet/Base/Hacking Meter.tscn" id="8_1o88t"]
 [ext_resource type="PackedScene" uid="uid://ds1nj30vqe7uq" path="res://Scripts/Tablet/Base/HackingNode.tscn" id="8_o3ryr"]
 [ext_resource type="PackedScene" uid="uid://bimlq7eo8miyr" path="res://Scripts/Tablet/Base/Hacking Border.tscn" id="9_ci2h0"]
 [ext_resource type="PackedScene" uid="uid://cwek5x4dihsrd" path="res://Scripts/Tablet/Base/Hacking End.tscn" id="10_xi3xx"]
@@ -46,8 +47,60 @@ script = ExtResource("2_7gdu0")
 [node name="Scan" type="Node" parent="SubViewport/State Machine"]
 script = ExtResource("4_qmxnc")
 
-[node name="Scan Text" parent="SubViewport/State Machine/Scan" instance=ExtResource("6_qkm42")]
-position = Vector2(288, 120)
+[node name="Info" type="Node2D" parent="SubViewport/State Machine/Scan"]
+visible = false
+position = Vector2(898, 322)
+
+[node name="Scan Text" parent="SubViewport/State Machine/Scan/Info" instance=ExtResource("6_qkm42")]
+position = Vector2(-610, -202)
+
+[node name="Difficulty Text" type="RichTextLabel" parent="SubViewport/State Machine/Scan/Info"]
+custom_minimum_size = Vector2(200, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -23.0
+offset_top = 135.0
+offset_right = 177.0
+offset_bottom = 217.635
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("17_ivn0y")
+theme_override_font_sizes/normal_font_size = 15
+text = "bank account
+
+difficulty
+
+Time"
+fit_content = true
+
+[node name="Time" type="RichTextLabel" parent="SubViewport/State Machine/Scan/Info"]
+custom_minimum_size = Vector2(10, 10)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 101.0
+offset_top = 197.0
+offset_right = 151.0
+offset_bottom = 213.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("17_ivn0y")
+theme_override_font_sizes/normal_font_size = 15
+text = "0"
+fit_content = true
+
+[node name="Bank Account Meter" parent="SubViewport/State Machine/Scan/Info" instance=ExtResource("8_1o88t")]
+position = Vector2(113, 173)
+scale = Vector2(0.1, 0.1)
+
+[node name="Difficulty Meter" parent="SubViewport/State Machine/Scan/Info" instance=ExtResource("8_1o88t")]
+position = Vector2(113, 141)
+scale = Vector2(0.1, 0.1)
 
 [node name="Hacking" type="Node" parent="SubViewport/State Machine" node_paths=PackedStringArray("position_nodes", "start_position_node", "end_position_node", "timer_position_node", "Standby_State")]
 script = ExtResource("2_catnk")

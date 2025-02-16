@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://j6st83jmd46g"]
+
+[ext_resource type="Script" path="res://Scripts/Tablet/Scripts/HackingMeter.gd" id="1_bhsqx"]
+[ext_resource type="Texture2D" uid="uid://bljq2boqdbuoh" path="res://UI/Sprites/meter low.png" id="2_2t8jq"]
+[ext_resource type="Texture2D" uid="uid://c4b882uv6lrju" path="res://UI/Sprites/meter_mid.png" id="3_375hi"]
+[ext_resource type="Texture2D" uid="uid://cffl3eke82xa6" path="res://UI/Sprites/HighDifficultyIcon.png" id="4_2hycy"]
+
+[node name="Meter" type="Node2D"]
+script = ExtResource("1_bhsqx")
+
+[node name="Low" type="Sprite2D" parent="."]
+texture = ExtResource("2_2t8jq")
+
+[node name="Mid" type="Sprite2D" parent="."]
+texture = ExtResource("3_375hi")
+
+[node name="High" type="Sprite2D" parent="."]
+texture = ExtResource("4_2hycy")

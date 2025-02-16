@@ -70,8 +70,6 @@ text = "> Initializing connection to secure server... [OK]
 > Press [color=green]SPACE[/color] to start hacking process
 > Press [color=red]Escape[/color] to end"
 fit_content = true
-visible_characters = 0
-visible_ratio = 0.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

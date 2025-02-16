@@ -1,9 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://djhxxsnygx8t7"]
+[gd_scene load_steps=14 format=3 uid="uid://djhxxsnygx8t7"]
 
 [ext_resource type="Script" path="res://Scripts/FPS Controller/FPS_Controller.gd" id="1_aeyxv"]
 [ext_resource type="PackedScene" uid="uid://due5njjujj03j" path="res://Scripts/CameraSystem/Virtual Camera.tscn" id="2_ol4uu"]
 [ext_resource type="PackedScene" uid="uid://o7anx2l2naaw" path="res://Scripts/State Machine/State Machine.tscn" id="3_m0nhi"]
+[ext_resource type="Script" path="res://Scripts/FPS Controller/FootstepPlayer.gd" id="3_pix84"]
 [ext_resource type="Script" path="res://Scripts/FPS Controller/States/MoveState.gd" id="3_xodot"]
+[ext_resource type="Resource" uid="uid://dcas7vq8k1y03" path="res://Scripts/SoundCollection/Footsteps.tres" id="4_4l0jb"]
 [ext_resource type="Script" path="res://Scripts/FPS Controller/States/Idle.gd" id="6_ewtc6"]
 [ext_resource type="PackedScene" uid="uid://ehudage0l5hk" path="res://Scripts/Tablet/Tablet.tscn" id="7_6rr8x"]
 
@@ -27,7 +29,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(0, 0, -0.674), Vector3(0, -0.915242, -0.674041)]
+"values": [Vector3(0, -0.130547, -0.674041), Vector3(0, -0.915242, -0.674041)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -67,7 +69,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(0, -0.915242, -0.674041), Vector3(0, 0, -0.674)]
+"values": [Vector3(0, -0.915242, -0.674041), Vector3(0, -0.130547, -0.674041)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -108,7 +110,7 @@ camera = NodePath("Virtual Camera")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
 [node name="RayCast3D" type="RayCast3D" parent="Virtual Camera"]
-target_position = Vector3(0, 0, -1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.243481, 0)
 
 [node name="Tablet" parent="Virtual Camera" instance=ExtResource("7_6rr8x")]
 transform = Transform3D(0.1, 0, 0, 0, 0.0984808, 0.0173648, 0, -0.0173648, 0.0984808, 0, -0.130547, -0.674041)
@@ -122,6 +124,8 @@ First_State = NodePath("Move")
 
 [node name="Move" type="Node" parent="Controller State Machine" node_paths=PackedStringArray("controller", "camera")]
 script = ExtResource("3_xodot")
+speed = null
+fov = null
 controller = NodePath("../..")
 camera = NodePath("../../Virtual Camera")
 
@@ -129,6 +133,10 @@ camera = NodePath("../../Virtual Camera")
 script = ExtResource("6_ewtc6")
 controller = NodePath("../..")
 camera = NodePath("../../Virtual Camera")
+
+[node name="Footstep Player" type="AudioStreamPlayer3D" parent="."]
+script = ExtResource("3_pix84")
+footsteps = ExtResource("4_4l0jb")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

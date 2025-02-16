@@ -1,3 +1,4 @@
+class_name FootstepPlayer
 extends AudioStreamPlayer3D
 
 @export var footsteps:SoundCollection

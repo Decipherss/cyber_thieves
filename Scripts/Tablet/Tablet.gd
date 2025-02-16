@@ -9,7 +9,12 @@ extends Node
 
 var cash:int = 0
 
+var is_hacking:bool:
+	get: return sm.active_state == hacking_state
+
 func start_scan(npc):
+	if(sm.active_state == hacking_state):
+		return
 	scan_state.npc = npc
 	sm.Change_State(scan_state)
 	
