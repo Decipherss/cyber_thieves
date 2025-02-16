@@ -1,8 +1,12 @@
+class_name NPC
 extends CharacterBody3D
 
 @onready var nav_agent = $NavigationAgent3D
-@onready var body_mesh = $MeshInstance3D
-@onready var arms_mesh = $MeshInstance3D2
+@onready var body_mesh = $Robot01/Cube_005
+@onready var arms_mesh = $Robot01/Cube_006
+@onready var head_mesh = $Robot01/Cube_004
+@onready var antenne_mesh = $Robot01/Cube_007
+@onready var robot = $Robot01
 @export var speed: float = 3.0
 var target_location: Vector3
 var difficulty: int
@@ -34,7 +38,11 @@ func set_random_color():
 	
 	var new_material = StandardMaterial3D.new()
 	new_material.albedo_color = random_color
+	head_mesh.set_surface_override_material(0, new_material)
 	body_mesh.set_surface_override_material(0, new_material)
+	arms_mesh.set_surface_override_material(0, new_material)
+	antenne_mesh.set_surface_override_material(0, new_material)
+	
 
 func _physics_process(delta: float) -> void:
 	if nav_agent.is_navigation_finished():
